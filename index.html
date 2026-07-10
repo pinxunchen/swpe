@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=22">
+    <link rel="stylesheet" href="style.css?v=23">
 </head>
 
 <body>
@@ -390,6 +390,11 @@
                 <h2>產生腳本</h2>
             </div>
             <div class="card-body">
+                <div class="output-filename">
+                    <label>檔案名稱：</label>
+                    <input type="text" id="filename-input" class="setting-input" value="我的腳本" placeholder="輸入檔案名稱">
+                    <span class="filename-ext">.swpe</span>
+                </div>
                 <div class="output-actions">
                     <button class="btn btn-primary" id="btn-generate">
                         <span class="btn-icon">⚡</span> 產生腳本
@@ -403,11 +408,6 @@
                     <span
                         style="color: var(--gold-light); font-size: 13px; font-weight: 500; align-self: center; margin-left: 8px;">⚠️
                         請把副本放到swpe副本腳本資料夾內</span>
-                </div>
-                <div class="output-filename">
-                    <label>檔案名稱：</label>
-                    <input type="text" id="filename-input" class="setting-input" value="我的腳本" placeholder="輸入檔案名稱">
-                    <span class="filename-ext">.swpe</span>
                 </div>
                 <div class="output-preview">
                     <div class="preview-header">
