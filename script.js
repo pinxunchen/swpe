@@ -578,6 +578,8 @@ function generateTeamLeaderScript(settings, moduleOrder) {
     }
     lines.push('');
 
+    lines.push('快速遇怪()');
+    lines.push('');
     if (settings.enableWaitTime) {
         lines.push(`等待時間("${settings.waitTime}")`);
         lines.push('');
@@ -882,6 +884,8 @@ function generateTeamMemberScript(settings, moduleOrder) {
     }
     lines.push('');
 
+    lines.push('快速遇怪()');
+    lines.push('');
     if (settings.enableWaitTime) {
         lines.push(`等待時間("${settings.waitTime}")`);
         lines.push('');
