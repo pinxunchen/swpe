@@ -30,13 +30,13 @@ const DUNGEONS = [
     { level: 160, name: "孔明借東風", script: "160孔明借東風", interactId: 6, lootId: 24199, lootName: "東風招來袋" },
     { level: 160, name: "赤壁之戰", script: "160赤壁之戰", interactId: 1, lootId: 24271, lootName: "赤壁烽火箱" },
     { level: 165, name: "華容", script: "165華容", interactId: 2, lootId: 24291, lootName: "華容救急袋" },
-    { level: 165, name: "華容_跟隊", script: "165華容_跟隊", interactId: 2, lootId: 24291, lootName: "華容救急袋", isSpecialFollow: true },
     { level: 170, name: "四郡", script: "170四郡", interactId: 19, lootId: 24358, lootName: "四郡平定箱" },
     { level: 170, name: "速刷", script: "170速刷", interactId: 9, lootId: 24328, lootName: "軍征之守箱" },
     { level: 175, name: "劉備迎娶孫夫人", script: "175劉備迎娶孫夫人", interactId: 4, lootId: null, lootName: null },
     { level: 180, name: "張遼威震逍遙律", script: "180張遼威震逍遙律", interactId: 7, lootId: 24637, lootName: "金湯之盒" },
     { level: 180, name: "馬孟起興兵雪恨", script: "180馬孟起興兵雪恨", interactId: 10, lootId: 24439, lootName: "復仇怒盒" },
-    { level: 175, name: "劉備迎娶孫夫人_跟隊隊員選這個", script: "175劉備迎娶孫夫人_跟隊", interactId: 4, lootId: null, lootName: null, isSpecialFollow: true }
+    { level: 165, name: "華容_跟隊隊員", script: "165華容_跟隊", interactId: 2, lootId: 24291, lootName: "華容救急袋", isSpecialFollow: true },
+    { level: 175, name: "劉備迎娶孫夫人_跟隊隊員", script: "175劉備迎娶孫夫人_跟隊", interactId: 4, lootId: null, lootName: null, isSpecialFollow: true }
 ];
 
 // ---- Initialize UI ----
@@ -54,7 +54,7 @@ function initLevelGrid(containerId, levels, prefix) {
 function initDungeonGrid() {
     const container = document.getElementById('dungeon-list');
     container.innerHTML = DUNGEONS.map((d, i) => {
-        const isWide = (d.script === '175劉備迎娶孫夫人_跟隊') ? ' wide' : '';
+        const isWide = (d.script === '175劉備迎娶孫夫人_跟隊' || d.script === '165華容_跟隊') ? ' wide' : '';
         return `
             <label class="dungeon-chip${isWide}">
                 <input type="checkbox" name="dungeon-${i}" value="${i}">
