@@ -817,6 +817,10 @@ select option {
     align-items: center;
 }
 
+.dungeon-chip.wide {
+    grid-column: span 2;
+}
+
 .dungeon-chip input[type="checkbox"] {
     display: none;
 }

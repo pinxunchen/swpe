@@ -34,9 +34,9 @@ const DUNGEONS = [
     { level: 170, name: "四郡", script: "170四郡", interactId: 19, lootId: 24358, lootName: "四郡平定箱" },
     { level: 170, name: "速刷", script: "170速刷", interactId: 9, lootId: 24328, lootName: "軍征之守箱" },
     { level: 175, name: "劉備迎娶孫夫人", script: "175劉備迎娶孫夫人", interactId: 4, lootId: null, lootName: null },
-    { level: 175, name: "劉備迎娶孫夫人_跟隊", script: "175劉備迎娶孫夫人_跟隊", interactId: 4, lootId: null, lootName: null, isSpecialFollow: true },
     { level: 180, name: "張遼威震逍遙律", script: "180張遼威震逍遙律", interactId: 7, lootId: 24637, lootName: "金湯之盒" },
-    { level: 180, name: "馬孟起興兵雪恨", script: "180馬孟起興兵雪恨", interactId: 10, lootId: 24439, lootName: "復仇怒盒" }
+    { level: 180, name: "馬孟起興兵雪恨", script: "180馬孟起興兵雪恨", interactId: 10, lootId: 24439, lootName: "復仇怒盒" },
+    { level: 175, name: "劉備迎娶孫夫人_跟隊", script: "175劉備迎娶孫夫人_跟隊", interactId: 4, lootId: null, lootName: null, isSpecialFollow: true }
 ];
 
 // ---- Initialize UI ----
@@ -53,15 +53,18 @@ function initLevelGrid(containerId, levels, prefix) {
 
 function initDungeonGrid() {
     const container = document.getElementById('dungeon-list');
-    container.innerHTML = DUNGEONS.map((d, i) => `
-        <label class="dungeon-chip">
-            <input type="checkbox" name="dungeon-${i}" value="${i}">
-            <span class="dungeon-chip-label">
-                <span class="dungeon-lv">Lv.${d.level}</span>
-                <span class="dungeon-name" title="${d.name}">${d.name}</span>
-            </span>
-        </label>
-    `).join('');
+    container.innerHTML = DUNGEONS.map((d, i) => {
+        const isWide = (d.script === '175劉備迎娶孫夫人_跟隊') ? ' wide' : '';
+        return `
+            <label class="dungeon-chip${isWide}">
+                <input type="checkbox" name="dungeon-${i}" value="${i}">
+                <span class="dungeon-chip-label">
+                    <span class="dungeon-lv">Lv.${d.level}</span>
+                    <span class="dungeon-name" title="${d.name}">${d.name}</span>
+                </span>
+            </label>
+        `;
+    }).join('');
 }
 
 function initUI() {
