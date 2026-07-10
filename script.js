@@ -288,7 +288,7 @@ function getSettings() {
         dungeonTimes: getValue('dungeon-times', 5),
         guanfuTimes: getValue('guanfu-times', 3),
         rebattleScript: document.getElementById('dungeon-rebattle')?.value || '',
-        
+
         enableWaitTime: isChecked('enable-wait-time'),
         enableBagCleaning: isChecked('enable-bag-cleaning'),
         enableTeleport: isChecked('enable-teleport'),
@@ -314,7 +314,7 @@ function generateScript(isAuto = false) {
     syncSelectAllToggles();
     const settings = getSettings();
     const moduleOrder = getModuleOrder();
-    
+
     // 驗證：如果模組標題有勾選，但內容沒有選取任何等級/副本，則進行提醒，並自動取消勾選
     for (const mod of moduleOrder) {
         if (mod.enabled) {
@@ -349,10 +349,10 @@ function generateScript(isAuto = false) {
             if (errorMsg && checkboxId) {
                 // 自動將該模組的標題設為不啟用
                 document.getElementById(checkboxId).checked = false;
-                
+
                 // 不論是否為自動預覽，驗證警告都應該顯示（因為會自動取消勾選，使用者需要知道原因）
                 showToast(errorMsg, 'warning');
-                
+
                 // 遞迴重新執行，以在畫面上即時更新不包含該模組的代碼
                 return generateScript(isAuto);
             }
@@ -415,7 +415,7 @@ function generateSoloScript(settings, moduleOrder) {
     }
 
 
-    
+
     if (settings.enableBagCleaning) {
         lines.push(`清理背包(${settings.bagToggle}, ${settings.bagCount}, ${settings.bagDelay}, ${settings.bagStart}, ${settings.bagEnd})`);
         lines.push('延遲毫秒(2000)');
@@ -471,16 +471,12 @@ function generateSoloJunxu() {
     const groups = groupConsecutiveLevels(levels, JUNXU_LEVELS);
 
     for (const group of groups) {
-        // Chunk group into subgroups of max 5 levels
-        for (let i = 0; i < group.length; i += 5) {
-            const chunk = group.slice(i, i + 5);
-            const min = chunk[0];
-            const max = chunk[chunk.length - 1];
-            lines.push(`執行軍需(${min}, ${max}, 1)`);
-            lines.push(`執行軍需(${min}, ${max}, 2)`);
-            lines.push(`執行軍需(${min}, ${max}, 3)`);
-            lines.push('');
-        }
+        const min = group[0];
+        const max = group[group.length - 1];
+        lines.push(`執行軍需(${min}, ${max}, 1)`);
+        lines.push(`執行軍需(${min}, ${max}, 2)`);
+        lines.push(`執行軍需(${min}, ${max}, 3)`);
+        lines.push('');
     }
 
     return lines;
@@ -495,18 +491,14 @@ function generateSoloBairen(settings) {
     const groups = groupConsecutiveLevels(levels, BAIREN_LEVELS);
 
     for (const group of groups) {
-        // Chunk group into subgroups of max 5 levels
-        for (let i = 0; i < group.length; i += 5) {
-            const chunk = group.slice(i, i + 5);
-            const min = chunk[0];
-            const max = chunk[chunk.length - 1];
-            lines.push(`執行百人(${min}, ${max}, 1)`);
-            lines.push('等隊伍人數(1)');
-            lines.push(`執行百人(${min}, ${max}, 2)`);
-            lines.push('解散隊伍()');
-            lines.push(`執行百人(${min}, ${max}, 3)`);
-            lines.push('');
-        }
+        const min = group[0];
+        const max = group[group.length - 1];
+        lines.push(`執行百人(${min}, ${max}, 1)`);
+        lines.push('等隊伍人數(1)');
+        lines.push(`執行百人(${min}, ${max}, 2)`);
+        lines.push('解散隊伍()');
+        lines.push(`執行百人(${min}, ${max}, 3)`);
+        lines.push('');
     }
 
     return lines;
@@ -1024,11 +1016,12 @@ function generateTeamDungeonMember(settings) {
 
 // ---- Helper Functions ----
 
-function groupConsecutiveLevels(selected, allLevels) {
+function groupConsecutiveLevels(selected, allLevels, maxGroupSize = 5) {
     // Group selected levels that are consecutive in the allLevels array
+    // Then split any group larger than maxGroupSize into chunks
     if (selected.length === 0) return [];
 
-    const groups = [];
+    const rawGroups = [];
     let currentGroup = [selected[0]];
 
     for (let i = 1; i < selected.length; i++) {
@@ -1038,11 +1031,19 @@ function groupConsecutiveLevels(selected, allLevels) {
         if (currIdx === prevIdx + 1) {
             currentGroup.push(selected[i]);
         } else {
-            groups.push(currentGroup);
+            rawGroups.push(currentGroup);
             currentGroup = [selected[i]];
         }
     }
-    groups.push(currentGroup);
+    rawGroups.push(currentGroup);
+
+    // Split groups that exceed maxGroupSize
+    const groups = [];
+    for (const group of rawGroups) {
+        for (let i = 0; i < group.length; i += maxGroupSize) {
+            groups.push(group.slice(i, i + maxGroupSize));
+        }
+    }
     return groups;
 }
 
@@ -1115,9 +1116,9 @@ function showToast(message, type = 'success') {
     const toast = document.getElementById('toast');
     const msg = document.getElementById('toast-msg');
     const icon = toast.querySelector('.toast-icon');
-    
+
     msg.textContent = message;
-    
+
     toast.classList.remove('toast-success', 'toast-warning');
     if (type === 'warning') {
         toast.classList.add('toast-warning');
@@ -1126,13 +1127,13 @@ function showToast(message, type = 'success') {
         toast.classList.add('toast-success');
         if (icon) icon.textContent = '✓';
     }
-    
+
     toast.classList.add('show');
-    
+
     if (toast.timeoutId) {
         clearTimeout(toast.timeoutId);
     }
-    
+
     toast.timeoutId = setTimeout(() => {
         toast.classList.remove('show');
     }, type === 'warning' ? 4000 : 2500);
@@ -1216,7 +1217,7 @@ function updateRebattleDropdown() {
 
     // Rebuild options
     let html = '<option value="">無 (不使用再戰)</option>';
-    
+
     selectedDungeons.forEach(d => {
         const isSelected = (d.script === currentVal) ? 'selected' : '';
         html += `<option value="${d.script}" ${isSelected}>Lv.${d.level} ${d.name}</option>`;
