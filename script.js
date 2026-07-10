@@ -135,7 +135,7 @@ function setupEventListeners() {
     }
 
     // Generate / Copy / Download
-    document.getElementById('btn-generate').addEventListener('click', generateScript);
+
     document.getElementById('btn-copy').addEventListener('click', copyScript);
     document.getElementById('btn-download').addEventListener('click', downloadScript);
 
