@@ -471,12 +471,16 @@ function generateSoloJunxu() {
     const groups = groupConsecutiveLevels(levels, JUNXU_LEVELS);
 
     for (const group of groups) {
-        const min = group[0];
-        const max = group[group.length - 1];
-        lines.push(`執行軍需(${min}, ${max}, 1)`);
-        lines.push(`執行軍需(${min}, ${max}, 2)`);
-        lines.push(`執行軍需(${min}, ${max}, 3)`);
-        lines.push('');
+        // Chunk group into subgroups of max 5 levels
+        for (let i = 0; i < group.length; i += 5) {
+            const chunk = group.slice(i, i + 5);
+            const min = chunk[0];
+            const max = chunk[chunk.length - 1];
+            lines.push(`執行軍需(${min}, ${max}, 1)`);
+            lines.push(`執行軍需(${min}, ${max}, 2)`);
+            lines.push(`執行軍需(${min}, ${max}, 3)`);
+            lines.push('');
+        }
     }
 
     return lines;
@@ -491,14 +495,18 @@ function generateSoloBairen(settings) {
     const groups = groupConsecutiveLevels(levels, BAIREN_LEVELS);
 
     for (const group of groups) {
-        const min = group[0];
-        const max = group[group.length - 1];
-        lines.push(`執行百人(${min}, ${max}, 1)`);
-        lines.push('等隊伍人數(1)');
-        lines.push(`執行百人(${min}, ${max}, 2)`);
-        lines.push('解散隊伍()');
-        lines.push(`執行百人(${min}, ${max}, 3)`);
-        lines.push('');
+        // Chunk group into subgroups of max 5 levels
+        for (let i = 0; i < group.length; i += 5) {
+            const chunk = group.slice(i, i + 5);
+            const min = chunk[0];
+            const max = chunk[chunk.length - 1];
+            lines.push(`執行百人(${min}, ${max}, 1)`);
+            lines.push('等隊伍人數(1)');
+            lines.push(`執行百人(${min}, ${max}, 2)`);
+            lines.push('解散隊伍()');
+            lines.push(`執行百人(${min}, ${max}, 3)`);
+            lines.push('');
+        }
     }
 
     return lines;
