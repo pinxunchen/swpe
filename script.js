@@ -136,6 +136,7 @@ function setupEventListeners() {
 
     // Generate / Copy / Download
 
+    document.getElementById('btn-reset').addEventListener('click', resetAllSettings);
     document.getElementById('btn-copy').addEventListener('click', copyScript);
     document.getElementById('btn-download').addEventListener('click', downloadScript);
 
@@ -1083,6 +1084,100 @@ function groupBairenLevels(levels) {
         result.push(levels.slice(i, i + chunkSize));
     }
     return result;
+}
+
+function resetAllSettings() {
+    // 1. Reset Step 1: Mode & Role
+    document.getElementById('mode-solo').checked = true;
+    document.getElementById('mode-team').checked = false;
+    document.getElementById('role-leader').checked = true;
+    document.getElementById('role-member').checked = false;
+    
+    // Trigger onModeChange to update UI visibility of team settings
+    onModeChange();
+    
+    // 2. Reset Step 2: Settings parameters
+    document.getElementById('enable-wait-time').checked = true;
+    document.getElementById('wait-time-hour').value = '00';
+    document.getElementById('wait-time-minute').value = '01';
+    
+    document.getElementById('enable-bag-cleaning').checked = true;
+    document.getElementById('bag-toggle').value = '1';
+    document.getElementById('bag-count').value = '1';
+    document.getElementById('bag-delay').value = '2000';
+    document.getElementById('bag-start').value = '1';
+    document.getElementById('bag-end').value = '15';
+    
+    document.getElementById('enable-teleport').checked = true;
+    document.getElementById('teleport-id').value = '2';
+    
+    document.getElementById('enable-leader-id').checked = true;
+    document.getElementById('leader-id').value = '';
+    
+    document.getElementById('enable-team-size').checked = true;
+    document.getElementById('team-size').value = '5';
+    
+    document.getElementById('enable-bag-number').checked = true;
+    document.getElementById('bag-number').value = '1';
+    
+    // 3. Reset Step 3: Modules list
+    // Checkboxes in header
+    document.getElementById('module-junxu').checked = false;
+    document.getElementById('module-bairen').checked = false;
+    document.getElementById('module-guanfu').checked = false;
+    document.getElementById('module-dungeon').checked = false;
+    
+    // Collapse values
+    document.getElementById('junxu-content').classList.remove('collapsed');
+    document.getElementById('bairen-content').classList.remove('collapsed');
+    document.getElementById('guanfu-content').classList.remove('collapsed');
+    document.getElementById('dungeon-content').classList.remove('collapsed');
+    
+    // All levels and dungeons checkboxes
+    document.querySelectorAll('#junxu-levels input[type="checkbox"]').forEach(cb => cb.checked = false);
+    document.querySelectorAll('#bairen-levels input[type="checkbox"]').forEach(cb => cb.checked = false);
+    document.querySelectorAll('#guanfu-levels input[type="checkbox"]').forEach(cb => cb.checked = false);
+    document.querySelectorAll('#dungeon-list input[type="checkbox"]').forEach(cb => cb.checked = false);
+    
+    // Reset secondary values
+    document.getElementById('guanfu-times').value = '3';
+    document.getElementById('dungeon-times').value = '5';
+    
+    // Rebattle select value
+    const rebattleSel = document.getElementById('dungeon-rebattle');
+    if (rebattleSel) {
+        rebattleSel.value = '';
+    }
+    
+    // All select-all checkboxes
+    document.querySelectorAll('.toggle-select-all').forEach(cb => cb.checked = false);
+    
+    // Restore default module order in list
+    const list = document.getElementById('modules-list');
+    if (list) {
+        const items = [...list.querySelectorAll('.module-item')];
+        const defaultOrder = ['junxu', 'bairen', 'guanfu', 'dungeon'];
+        defaultOrder.forEach(modId => {
+            const item = items.find(el => el.getAttribute('data-module') === modId);
+            if (item) {
+                list.appendChild(item);
+            }
+        });
+    }
+
+    // Update rebattle select options
+    updateRebattleDropdown();
+
+    // 4. Reset Step 4: Output
+    const previewEl = document.getElementById('preview-code');
+    if (previewEl) {
+        previewEl.value = '';
+    }
+    
+    // Finally, regenerate the script preview!
+    autoGenerate();
+    
+    showToast('已還原為初始預設值！', 'success');
 }
 
 // ---- Copy / Download ----
