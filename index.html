@@ -48,7 +48,7 @@
                             <div class="mode-card">
                                 <div class="mode-icon">👥</div>
                                 <div class="mode-title">組隊模式</div>
-                                <div class="mode-desc">分隊長/隊員，組隊打副本</div>
+                                <div class="mode-desc">分隊長/隊員，組隊打百人/官府/副本</div>
                             </div>
                         </label>
                     </div>
@@ -75,7 +75,8 @@
                     <div id="team-settings-group"
                         style="display:none; margin-top: 10px; border-top: 1px solid rgba(42,53,80,0.5); padding-top: 10px;">
                         <div style="display: flex; gap: 16px; align-items: center; width: 100%; flex-wrap: wrap;">
-                            <div style="display: flex; align-items: center; justify-content: flex-start; gap: 8px; flex: 1; min-width: 140px;">
+                            <div
+                                style="display: flex; align-items: center; justify-content: flex-start; gap: 8px; flex: 1; min-width: 140px;">
                                 <div class="setting-label" style="margin-bottom: 0; white-space: nowrap;">
                                     <label class="setting-toggle" style="margin-right: 4px;">
                                         <input type="checkbox" id="enable-leader-id" checked>
@@ -84,18 +85,23 @@
                                     <span>隊長編號</span>
                                     <span class="help-icon" data-tooltip="加入隊伍(隊長編號, 隊伍人數)&#10;隊長的玩家編號，可在遊戲中查看">?</span>
                                 </div>
-                                <input type="text" id="leader-id" class="setting-input" style="width: 120px; height: 34px; padding: 4px 8px; font-size: 15px;" placeholder="輸入編號" value="">
+                                <input type="text" id="leader-id" class="setting-input"
+                                    style="width: 120px; height: 34px; padding: 4px 8px; font-size: 15px;"
+                                    placeholder="輸入編號" value="">
                             </div>
-                            <div style="display: flex; align-items: center; justify-content: flex-start; gap: 8px; flex: 1; min-width: 120px;">
+                            <div
+                                style="display: flex; align-items: center; justify-content: flex-start; gap: 8px; flex: 1; min-width: 120px;">
                                 <div class="setting-label" style="margin-bottom: 0; white-space: nowrap;">
                                     <label class="setting-toggle" style="margin-right: 4px;">
                                         <input type="checkbox" id="enable-team-size" checked>
                                         <span class="checkbox-custom"></span>
                                     </label>
                                     <span>隊伍人數</span>
-                                    <span class="help-icon" data-tooltip="等隊伍人數(隊伍人數): 隊伍人數只能介乎於 1 至 5&#10;用於等待所有隊員到齊後再開始任務">?</span>
+                                    <span class="help-icon"
+                                        data-tooltip="等隊伍人數(隊伍人數): 隊伍人數只能介乎於 1 至 5&#10;用於等待所有隊員到齊後再開始任務">?</span>
                                 </div>
-                                <select id="team-size" class="setting-input-sm" style="width: 80px; height: 34px; padding: 4px 8px; font-size: 15px;">
+                                <select id="team-size" class="setting-input-sm"
+                                    style="width: 80px; height: 34px; padding: 4px 8px; font-size: 15px;">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
