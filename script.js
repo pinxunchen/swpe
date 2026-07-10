@@ -394,7 +394,7 @@ function generateSoloScript(settings, moduleOrder) {
     const isDungeonEnabled = moduleOrder.some(m => m.id === 'dungeon' && m.enabled);
 
     // Header
-    lines.push('快速遇怪()');
+    lines.push('快速遇怪(1)');
     lines.push('');
     if (settings.enableWaitTime) {
         lines.push(`等待時間("${settings.waitTime}")`);
@@ -578,7 +578,7 @@ function generateTeamLeaderScript(settings, moduleOrder) {
     }
     lines.push('');
 
-    lines.push('快速遇怪()');
+    lines.push('快速遇怪(1)');
     lines.push('');
     if (settings.enableWaitTime) {
         lines.push(`等待時間("${settings.waitTime}")`);
@@ -884,7 +884,7 @@ function generateTeamMemberScript(settings, moduleOrder) {
     }
     lines.push('');
 
-    lines.push('快速遇怪()');
+    lines.push('快速遇怪(1)');
     lines.push('');
     if (settings.enableWaitTime) {
         lines.push(`等待時間("${settings.waitTime}")`);
