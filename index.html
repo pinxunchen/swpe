@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=24">
+    <link rel="stylesheet" href="style.css?v=23">
 </head>
 
 <body>
@@ -40,7 +40,7 @@
                             <div class="mode-card">
                                 <div class="mode-icon">🧑</div>
                                 <div class="mode-title">單人模式</div>
-                                <div class="mode-desc">一人執行軍需/百人/副本等任務</div>
+                                <div class="mode-desc">一人執行軍需/百人/官府/副本任務</div>
                             </div>
                         </label>
                         <label class="mode-option" id="mode-team-label">
@@ -134,8 +134,11 @@
                                 <span class="help-icon"
                                     data-tooltip="等待時間(時間): 冒號必須是英文冒號，時間以24小時制表達&#10;例如: &quot;16:55&quot; = 腳本會在 4:55 p.m. 時繼續執行&#10;若當前時間已超過，將等到隔天同一時間">?</span>
                             </div>
-                            <input type="text" id="wait-time" class="setting-input" value="00:01" placeholder="HH:MM"
-                                pattern="([01]\d|2[0-3]):[0-5]\d" maxlength="5">
+                            <div class="time-picker-wrapper" style="display: flex; align-items: center; gap: 4px;">
+                                <input type="text" id="wait-time-hour" class="setting-input-sm" style="width: 50px; text-align: center; height: 32px; padding: 4px; font-size: 15px;" maxlength="2" placeholder="HH" value="00">
+                                <span style="color: var(--text-primary); font-weight: bold; font-size: 16px;">:</span>
+                                <input type="text" id="wait-time-minute" class="setting-input-sm" style="width: 50px; text-align: center; height: 32px; padding: 4px; font-size: 15px;" maxlength="2" placeholder="MM" value="01">
+                            </div>
                         </div>
 
                         <div class="setting-row">
@@ -390,7 +393,7 @@
                 <h2>產生腳本</h2>
             </div>
             <div class="card-body">
-                <div class="output-filename" style="display: none;">
+                <div class="output-filename">
                     <label>檔案名稱：</label>
                     <input type="text" id="filename-input" class="setting-input" value="我的腳本" placeholder="輸入檔案名稱">
                     <span class="filename-ext">.swpe</span>
@@ -407,7 +410,7 @@
                     </button>
                     <span
                         style="color: var(--gold-light); font-size: 13px; font-weight: 500; align-self: center; margin-left: 8px;">⚠️
-                        請把副本放到swpe副本腳本資料夾內</span>
+                        下載後請把腳本放到有副本腳本的資料夾內</span>
                 </div>
                 <div class="output-preview">
                     <div class="preview-header">

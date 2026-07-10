@@ -156,6 +156,33 @@ function setupEventListeners() {
             document.getElementById('line-count').textContent = `${lineCount} 行`;
         });
     }
+
+    // Time picker validation listeners
+    const hEl = document.getElementById('wait-time-hour');
+    const mEl = document.getElementById('wait-time-minute');
+    if (hEl && mEl) {
+        const validateAndFilter = (el) => {
+            el.value = el.value.replace(/\D/g, '').slice(0, 2);
+            autoGenerate();
+        };
+        hEl.addEventListener('input', () => validateAndFilter(hEl));
+        mEl.addEventListener('input', () => validateAndFilter(mEl));
+
+        hEl.addEventListener('blur', () => {
+            let val = parseInt(hEl.value, 10);
+            if (isNaN(val) || val < 0) val = 0;
+            if (val > 23) val = 23;
+            hEl.value = String(val).padStart(2, '0');
+            autoGenerate();
+        });
+        mEl.addEventListener('blur', () => {
+            let val = parseInt(mEl.value, 10);
+            if (isNaN(val) || val < 0) val = 0;
+            if (val > 59) val = 59;
+            mEl.value = String(val).padStart(2, '0');
+            autoGenerate();
+        });
+    }
 }
 
 function onModeChange() {
@@ -260,7 +287,19 @@ function getSettings() {
     return {
         mode: document.querySelector('input[name="mode"]:checked').value,
         role: document.querySelector('input[name="team-role"]:checked')?.value || 'leader',
-        waitTime: document.getElementById('wait-time').value || '00:01',
+        waitTime: (() => {
+            const hEl = document.getElementById('wait-time-hour');
+            const mEl = document.getElementById('wait-time-minute');
+            let h = hEl ? hEl.value.trim() : '00';
+            let m = mEl ? mEl.value.trim() : '01';
+            h = h.replace(/\D/g, '');
+            m = m.replace(/\D/g, '');
+            let hNum = parseInt(h, 10);
+            let mNum = parseInt(m, 10);
+            if (isNaN(hNum) || hNum < 0 || hNum > 23) hNum = 0;
+            if (isNaN(mNum) || mNum < 0 || mNum > 59) mNum = 1;
+            return `${String(hNum).padStart(2, '0')}:${String(mNum).padStart(2, '0')}`;
+        })(),
         bagToggle: getValue('bag-toggle', 0),
         bagCount: getValue('bag-count', 0),
         bagDelay: getValue('bag-delay', 0),
