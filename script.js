@@ -36,7 +36,7 @@ const DUNGEONS = [
     { level: 175, name: "劉備迎娶孫夫人", script: "175劉備迎娶孫夫人", interactId: 4, lootId: null, lootName: null },
     { level: 180, name: "張遼威震逍遙律", script: "180張遼威震逍遙律", interactId: 7, lootId: 24637, lootName: "金湯之盒" },
     { level: 180, name: "馬孟起興兵雪恨", script: "180馬孟起興兵雪恨", interactId: 10, lootId: 24439, lootName: "復仇怒盒" },
-    { level: 175, name: "劉備迎娶孫夫人_跟隊", script: "175劉備迎娶孫夫人_跟隊", interactId: 4, lootId: null, lootName: null, isSpecialFollow: true }
+    { level: 175, name: "劉備迎娶孫夫人_跟隊隊員選這個", script: "175劉備迎娶孫夫人_跟隊", interactId: 4, lootId: null, lootName: null, isSpecialFollow: true }
 ];
 
 // ---- Initialize UI ----
