@@ -865,6 +865,10 @@ select option {
 .dungeon-name {
     flex: 1;
     font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
 }
 
 .dungeon-loot {

@@ -58,7 +58,7 @@ function initDungeonGrid() {
             <input type="checkbox" name="dungeon-${i}" value="${i}">
             <span class="dungeon-chip-label">
                 <span class="dungeon-lv">Lv.${d.level}</span>
-                <span class="dungeon-name">${d.name}</span>
+                <span class="dungeon-name" title="${d.name}">${d.name}</span>
             </span>
         </label>
     `).join('');
