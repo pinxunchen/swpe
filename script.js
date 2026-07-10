@@ -6,33 +6,18 @@
 
 const JUNXU_LEVELS = [60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
 const BAIREN_LEVELS = [60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
-const GUANFU_LEVELS = [45, 55, 65, 75, 85, 95, 105, 115]; const DUNGEONS = [
-    { level: 50, name: "章魚_修羅", script: "50章魚_修羅", interactId: 1, lootId: null, lootName: null },
+const GUANFU_LEVELS = [45, 55, 65, 75, 85, 95, 105, 115];
+
+const DUNGEONS = [
     { level: 50, name: "章魚_困難", script: "50章魚_困難", interactId: 1, lootId: null, lootName: null },
-    { level: 50, name: "章魚_簡易", script: "50章魚_簡易", interactId: 1, lootId: null, lootName: null },
-    { level: 50, name: "黃巾", script: "50黃巾", interactId: 1, lootId: null, lootName: null },
-    { level: 55, name: "妖魂現世", script: "55妖魂現世", interactId: 1, lootId: null, lootName: null },
     { level: 70, name: "鮮卑腳本", script: "70鮮卑腳本", interactId: 1, lootId: 21685, lootName: "鮮卑戰利盒" },
     { level: 75, name: "搶救劉陶", script: "75搶救劉陶", interactId: 1, lootId: 21714, lootName: "救援錦囊" },
-    { level: 75, name: "黃巾", script: "75黃巾", interactId: 1, lootId: null, lootName: null },
-    { level: 75, name: "黃巾_跟隊", script: "75黃巾_跟隊", interactId: 1, lootId: null, lootName: null, isSpecialFollow: true },
     { level: 80, name: "伏擊速刷", script: "80伏擊速刷", interactId: 55, lootId: null, lootName: null },
-    { level: 80, name: "紫", script: "80紫", interactId: 1, lootId: null, lootName: null },
-    { level: 85, name: "誅滅惡宦官", script: "85誅滅惡宦官", interactId: 1, lootId: null, lootName: null },
     { level: 85, name: "誅滅惡宦官速刷", script: "85誅滅惡宦官速刷", interactId: 11, lootId: 21855, lootName: "孝女寶袋" },
-    { level: 90, name: "汜水之戰速刷", script: "90汜水之戰速刷", interactId: 1, lootId: null, lootName: null },
-    { level: 90, name: "護送劉關張", script: "90護送劉關張", interactId: 1, lootId: null, lootName: null },
-    { level: 95, name: "虎牢速攻戰", script: "95虎牢速攻戰", interactId: 1, lootId: null, lootName: null },
-    { level: 100, name: "打火速刷", script: "100打火速刷", interactId: 1, lootId: null, lootName: null },
     { level: 100, name: "界橋大戰", script: "100界橋大戰", interactId: 4, lootId: 22145, lootName: "豪龍寶盒" },
     { level: 105, name: "大戰黑山賊", script: "105大戰黑山賊", interactId: 4, lootId: 22192, lootName: "黑山寶盒" },
     { level: 110, name: "刺殺董卓", script: "110刺殺董卓", interactId: 41, lootId: 22474, lootName: "密刺寶盒" },
     { level: 110, name: "搶救徐州", script: "110搶救徐州", interactId: 27, lootId: 22509, lootName: "血色錦盒" },
-    { level: 115, name: "濮陽煉獄", script: "115濮陽煉獄", interactId: 1, lootId: null, lootName: null },
-    { level: 120, name: "宛城之役", script: "120宛城之役", interactId: 1, lootId: null, lootName: null },
-    { level: 120, name: "宛城之役密道", script: "120宛城之役密道", interactId: 1, lootId: null, lootName: null },
-    { level: 120, name: "狼王殘夢", script: "120狼王殘夢", interactId: 1, lootId: null, lootName: null },
-    { level: 120, name: "軍團毒物入侵", script: "120軍團毒物入侵", interactId: 1, lootId: null, lootName: null },
     { level: 130, name: "十面埋伏", script: "130十面埋伏", interactId: 17, lootId: 22872, lootName: "浴火重生箱" },
     { level: 130, name: "過五", script: "130過五", interactId: 26, lootId: null, lootName: null },
     { level: 135, name: "計掘漳河", script: "135計掘漳河", interactId: 13, lootId: 22884, lootName: "漳河計囊" },
@@ -40,21 +25,17 @@ const GUANFU_LEVELS = [45, 55, 65, 75, 85, 95, 105, 115]; const DUNGEONS = [
     { level: 140, name: "八門", script: "140八門", interactId: 9, lootId: 22978, lootName: "金鎖盒" },
     { level: 145, name: "博望", script: "145博望", interactId: 1, lootId: 22995, lootName: "臥龍妙絕錦囊" },
     { level: 150, name: "一夫當關", script: "150一夫當關", interactId: 7, lootId: 24101, lootName: "當陽聲震包" },
-    { level: 150, name: "故事腳本", script: "150故事腳本", interactId: 1, lootId: null, lootName: null },
     { level: 150, name: "速刷腳本", script: "150速刷腳本", interactId: 6, lootId: null, lootName: null },
     { level: 155, name: "借箭腳本", script: "155借箭腳本", interactId: 1, lootId: 24179, lootName: "諸葛臥龍錦囊" },
     { level: 160, name: "孔明借東風", script: "160孔明借東風", interactId: 6, lootId: 24199, lootName: "東風招來袋" },
     { level: 160, name: "赤壁之戰", script: "160赤壁之戰", interactId: 1, lootId: 24271, lootName: "赤壁烽火箱" },
-    { level: 160, name: "軍團打獵季節", script: "160軍團打獵季節", interactId: 1, lootId: null, lootName: null },
     { level: 165, name: "華容", script: "165華容", interactId: 2, lootId: 24291, lootName: "華容救急袋" },
     { level: 165, name: "華容_跟隊", script: "165華容_跟隊", interactId: 2, lootId: 24291, lootName: "華容救急袋", isSpecialFollow: true },
     { level: 170, name: "四郡", script: "170四郡", interactId: 19, lootId: 24358, lootName: "四郡平定箱" },
-    { level: 170, name: "爆戒", script: "170爆戒", interactId: 1, lootId: null, lootName: null },
-    { level: 170, name: "速刷", script: "170速刷", interactId: 9, lootId: 24328, lootName: "軍征之守箱" },
     { level: 175, name: "劉備迎娶孫夫人", script: "175劉備迎娶孫夫人", interactId: 4, lootId: null, lootName: null },
     { level: 175, name: "劉備迎娶孫夫人_跟隊", script: "175劉備迎娶孫夫人_跟隊", interactId: 4, lootId: null, lootName: null, isSpecialFollow: true },
     { level: 180, name: "張遼威震逍遙律", script: "180張遼威震逍遙律", interactId: 7, lootId: 24637, lootName: "金湯之盒" },
-    { level: 180, name: "馬孟起興兵雪恨", script: "180馬孟起興兵雪恨", interactId: 10, lootId: 24439, lootName: "復仇怒盒" },
+    { level: 180, name: "馬孟起興兵雪恨", script: "180馬孟起興兵雪恨", interactId: 10, lootId: 24439, lootName: "復仇怒盒" }
 ];
 
 // ---- Initialize UI ----
