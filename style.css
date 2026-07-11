@@ -205,8 +205,8 @@ body {
 }
 
 .step-badge {
-    font-size: 13px;
-    padding: 4px 12px;
+    font-size: 15px;
+    padding: 5px 14px;
     border-radius: 20px;
     background: var(--gradient-gold);
     color: #1a1a1a;
