@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=32">
+    <link rel="stylesheet" href="style.css?v=33">
 </head>
 
 <body>
@@ -206,23 +206,21 @@
                             </div>
                         </div>
 
-                        <div class="setting-row" id="teleport-setting">
-                            <div class="setting-label">
-                                <label class="setting-toggle">
+                        <div class="setting-row" id="teleport-setting" style="display: flex; align-items: center; gap: 12px; width: 100%;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <label class="setting-toggle" style="margin-bottom: 0;">
                                     <input type="checkbox" id="enable-teleport" checked>
                                     <span class="checkbox-custom"></span>
                                 </label>
-                                <span>使用傳送符</span>
+                                <span style="font-size: 16px; font-weight: 500; color: var(--text-primary);">使用傳送符</span>
                                 <span class="help-icon" data-tooltip="腳本結束後使用傳送符傳送到紀錄地點繼續掛機&#10;-由上到下1-3">?</span>
-                                <span
-                                    style="color: var(--gold-light); font-size: 13px; font-weight: 500; margin-left: 6px;">⚠️
-                                    記得要把傳送符放到包包不會被清理的位置</span>
+                                <select id="teleport-id" class="setting-input-sm" style="margin-left: 4px;">
+                                    <option value="1">1</option>
+                                    <option value="2" selected>2</option>
+                                    <option value="3">3</option>
+                                </select>
                             </div>
-                            <select id="teleport-id" class="setting-input-sm">
-                                <option value="1">1</option>
-                                <option value="2" selected>2</option>
-                                <option value="3">3</option>
-                            </select>
+                            <span style="color: var(--gold-light); font-size: 13px; font-weight: 500; margin-left: auto;">⚠️ 記得要把傳送符放到包包不會被清理的位置</span>
                         </div>
 
                         <div class="setting-row">
