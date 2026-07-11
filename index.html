@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=36">
+    <link rel="stylesheet" href="style.css?v=37">
 </head>
 
 <body>
@@ -134,7 +134,7 @@
                                         <input type="checkbox" id="enable-wait-time" checked>
                                         <span class="checkbox-custom"></span>
                                     </label>
-                                    <span>等待時間</span>
+                                    <span>腳本啟動時間</span>
                                     <span class="help-icon"
                                         data-tooltip="等待時間(時間): 冒號必須是英文冒號，時間以24小時制表達&#10;例如: &quot;16:55&quot; = 腳本會在 4:55 p.m. 時繼續執行&#10;若當前時間已超過，將等到隔天同一時間">?</span>
                                 </div>
@@ -142,7 +142,8 @@
                                     <input type="text" id="wait-time-hour" class="setting-input-sm"
                                         style="width: 50px; text-align: center; height: 32px; padding: 4px; font-size: 15px;"
                                         maxlength="2" placeholder="HH" value="00">
-                                    <span style="color: var(--text-primary); font-weight: bold; font-size: 16px;">:</span>
+                                    <span
+                                        style="color: var(--text-primary); font-weight: bold; font-size: 16px;">:</span>
                                     <input type="text" id="wait-time-minute" class="setting-input-sm"
                                         style="width: 50px; text-align: center; height: 32px; padding: 4px; font-size: 15px;"
                                         maxlength="2" placeholder="MM" value="01">
@@ -181,38 +182,41 @@
                             <div class="setting-inline-group">
                                 <div class="inline-field">
                                     <label>開關</label>
-                                    <input type="number" id="bag-toggle" class="setting-input-sm" style="width: 48px; padding: 4px 2px;" value="1" min="0"
-                                        max="1">
+                                    <input type="number" id="bag-toggle" class="setting-input-sm"
+                                        style="width: 48px; padding: 4px 2px;" value="1" min="0" max="1">
                                 </div>
                                 <div class="inline-field">
-                                    <label>滿</label>
-                                    <input type="number" id="bag-count" class="setting-input-sm" style="width: 48px; padding: 4px 2px;" value="1" min="0">
+                                    <label>當數量超過</label>
+                                    <input type="number" id="bag-count" class="setting-input-sm"
+                                        style="width: 48px; padding: 4px 2px;" value="1" min="0">
                                 </div>
                                 <div class="inline-field">
                                     <label>延遲</label>
-                                    <input type="number" id="bag-delay" class="setting-input-sm" style="width: 78px; padding: 4px 6px;" value="6000" min="0"
-                                        step="500">
+                                    <input type="number" id="bag-delay" class="setting-input-sm"
+                                        style="width: 78px; padding: 4px 6px;" value="6000" min="0" step="500">
                                 </div>
                                 <div class="inline-field">
                                     <label>起</label>
-                                    <input type="number" id="bag-start" class="setting-input-sm" style="width: 48px; padding: 4px 2px;" value="1" min="1"
-                                        max="25">
+                                    <input type="number" id="bag-start" class="setting-input-sm"
+                                        style="width: 48px; padding: 4px 2px;" value="1" min="1" max="25">
                                 </div>
                                 <div class="inline-field">
                                     <label>止</label>
-                                    <input type="number" id="bag-end" class="setting-input-sm" style="width: 48px; padding: 4px 2px;" value="15" min="1"
-                                        max="25">
+                                    <input type="number" id="bag-end" class="setting-input-sm"
+                                        style="width: 48px; padding: 4px 2px;" value="15" min="1" max="25">
                                 </div>
                             </div>
                         </div>
 
-                        <div class="setting-row" id="teleport-setting" style="display: flex; align-items: center; gap: 12px; width: 100%;">
+                        <div class="setting-row" id="teleport-setting"
+                            style="display: flex; align-items: center; gap: 12px; width: 100%;">
                             <div style="display: flex; align-items: center; gap: 8px;">
                                 <label class="setting-toggle" style="margin-bottom: 0;">
                                     <input type="checkbox" id="enable-teleport" checked>
                                     <span class="checkbox-custom"></span>
                                 </label>
-                                <span style="font-size: 16px; font-weight: 500; color: var(--text-primary);">使用傳送符</span>
+                                <span
+                                    style="font-size: 16px; font-weight: 500; color: var(--text-primary);">使用傳送符</span>
                                 <span class="help-icon" data-tooltip="腳本結束後使用傳送符傳送到紀錄地點繼續掛機&#10;-由上到下1-3">?</span>
                                 <select id="teleport-id" class="setting-input-sm" style="margin-left: 4px;">
                                     <option value="1">1</option>
@@ -220,7 +224,9 @@
                                     <option value="3">3</option>
                                 </select>
                             </div>
-                            <span style="color: var(--gold-light); font-size: 13px; font-weight: 500; margin-left: auto;">⚠️ 記得要把傳送符放到包包不會被清理的位置</span>
+                            <span
+                                style="color: var(--gold-light); font-size: 13px; font-weight: 500; margin-left: auto;">⚠️
+                                記得要把傳送符放到包包不會被清理的位置</span>
                         </div>
 
                         <div class="setting-row">
@@ -230,7 +236,8 @@
                                     <span class="checkbox-custom"></span>
                                 </label>
                                 <span>掛機吃經驗加倍</span>
-                                <span class="help-icon" data-tooltip="啟用後，會在腳本最後自動執行「魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)」，開始吃雙倍經驗值掛機。">?</span>
+                                <span class="help-icon"
+                                    data-tooltip="啟用後，會在腳本最後自動執行「魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)」，開始吃雙倍經驗值掛機。">?</span>
                             </div>
                         </div>
                     </div>
