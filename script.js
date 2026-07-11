@@ -15,7 +15,7 @@ const DUNGEONS = [
     { level: 70, name: "鮮卑腳本", script: "70鮮卑腳本", interactId: 1, lootId: 21685, lootName: "鮮卑戰利盒" },
     { level: 75, name: "搶救劉陶", script: "75搶救劉陶", interactId: 1, lootId: 21714, lootName: "救援錦囊" },
     { level: 80, name: "伏擊速刷", script: "80伏擊速刷", interactId: 55, lootId: null, lootName: null },
-    { level: 80, name: "紫", script: "80紫", interactId: 2, lootId: null, lootName: null },
+    { level: 80, name: "紫", script: "80紫", interactId: 7, lootId: null, lootName: null },
     { level: 85, name: "誅滅惡宦官速刷", script: "85誅滅惡宦官速刷", interactId: 11, lootId: 21855, lootName: "孝女寶袋" },
     { level: 100, name: "界橋大戰", script: "100界橋大戰", interactId: 4, lootId: 22145, lootName: "豪龍寶盒" },
     { level: 100, name: "打火速刷", script: "100打火速刷", interactId: 11, lootId: null, lootName: null },
