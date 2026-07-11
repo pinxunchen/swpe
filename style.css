@@ -435,6 +435,18 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
     transform: scale(1.1);
 }
 
+/* 隱藏 Chrome, Safari, Edge, Opera 瀏覽器的輸入框上下微調箭頭 */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* 隱藏 Firefox 瀏覽器的輸入框上下微調箭頭 */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
 .setting-input-sm {
     background: var(--bg-input);
     border: 1px solid var(--border-color);
