@@ -55,7 +55,7 @@ function initLevelGrid(containerId, levels, prefix) {
 function initDungeonGrid() {
     const container = document.getElementById('dungeon-list');
     container.innerHTML = DUNGEONS.map((d, i) => {
-        const isWide = (d.script === '175劉備迎娶孫夫人_跟隊' || d.script === '165華容_跟隊') ? ' wide' : '';
+        const isWide = (d.script === '175劉備迎娶孫夫人_跟隊') ? ' wide' : '';
         return `
             <label class="dungeon-chip${isWide}">
                 <input type="checkbox" name="dungeon-${i}" value="${i}">
