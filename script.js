@@ -329,6 +329,7 @@ function getSettings() {
         enableBagNumber: isChecked('enable-bag-number'),
         enableLeaderId: isChecked('enable-leader-id'),
         enableTeamSize: isChecked('enable-team-size'),
+        enableExpDouble: isChecked('enable-exp-double'),
     };
 }
 
@@ -488,6 +489,10 @@ function generateSoloScript(settings, moduleOrder) {
     }
     if (settings.enableTeleport) {
         lines.push(`使用傳送符(${settings.teleportId})`);
+        lines.push('');
+    }
+    if (settings.enableExpDouble) {
+        lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)');
         lines.push('');
     }
     lines.push('離開並掛機()');
@@ -672,6 +677,10 @@ function generateTeamLeaderScript(settings, moduleOrder) {
     // Footer
     if (settings.enableTeleport) {
         lines.push(`使用傳送符(${settings.teleportId})`);
+        lines.push('');
+    }
+    if (settings.enableExpDouble) {
+        lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)');
         lines.push('');
     }
     lines.push('離開並掛機()');
@@ -976,6 +985,10 @@ function generateTeamMemberScript(settings, moduleOrder) {
         lines.push(`使用傳送符(${settings.teleportId})`);
         lines.push('');
     }
+    if (settings.enableExpDouble) {
+        lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)');
+        lines.push('');
+    }
     lines.push('離開並掛機()');
 
     return lines;
@@ -1119,6 +1132,8 @@ function resetAllSettings() {
     
     document.getElementById('enable-teleport').checked = true;
     document.getElementById('teleport-id').value = '2';
+    
+    document.getElementById('enable-exp-double').checked = false;
     
     document.getElementById('enable-leader-id').checked = true;
     document.getElementById('leader-id').value = '';
