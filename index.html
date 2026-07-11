@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=29">
+    <link rel="stylesheet" href="style.css?v=30">
 </head>
 
 <body>
@@ -205,34 +205,35 @@
                             </select>
                         </div>
 
-                        <div class="setting-row">
-                            <div class="setting-label">
-                                <label class="setting-toggle">
-                                    <input type="checkbox" id="enable-exp-double">
-                                    <span class="checkbox-custom"></span>
-                                </label>
-                                <span>掛機吃經驗加倍</span>
-                                <span class="help-icon" data-tooltip="啟用後，會在腳本最後自動執行「魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)」，開始吃雙倍經驗值掛機。">?</span>
+                        <div class="setting-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <div class="setting-label" style="margin-bottom: 0;">
+                                    <label class="setting-toggle">
+                                        <input type="checkbox" id="enable-exp-double">
+                                        <span class="checkbox-custom"></span>
+                                    </label>
+                                    <span>掛機吃經驗加倍</span>
+                                    <span class="help-icon" data-tooltip="啟用後，會在腳本最後自動執行「魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)」，開始吃雙倍經驗值掛機。">?</span>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="setting-row">
-                            <div class="setting-label">
-                                <label class="setting-toggle">
-                                    <input type="checkbox" id="enable-bag-number" checked>
-                                    <span class="checkbox-custom"></span>
-                                </label>
-                                <span>行囊編號</span>
-                                <span class="help-icon"
-                                    data-tooltip="放物品入行囊(物品列表, 行囊編號)&#10;指定副本戰利品要放入的行囊編號，由左到右1到5">?</span>
+                            <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                                <div class="setting-label" style="margin-bottom: 0;">
+                                    <label class="setting-toggle">
+                                        <input type="checkbox" id="enable-bag-number" checked>
+                                        <span class="checkbox-custom"></span>
+                                    </label>
+                                    <span>行囊編號</span>
+                                    <span class="help-icon"
+                                        data-tooltip="放物品入行囊(物品列表, 行囊編號)&#10;指定副本戰利品要放入的行囊編號，由左到右1到5">?</span>
+                                </div>
+                                <select id="bag-number" class="setting-input-sm">
+                                    <option value="1" selected>1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
                             </div>
-                            <select id="bag-number" class="setting-input-sm">
-                                <option value="1" selected>1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
                         </div>
                     </div>
                 </div>
