@@ -310,7 +310,7 @@ function getSettings() {
             if (isNaN(mNum) || mNum < 0 || mNum > 59) mNum = 1;
             return `${String(hNum).padStart(2, '0')}:${String(mNum).padStart(2, '0')}`;
         })(),
-        bagToggle: getValue('bag-toggle', 0),
+        bagToggle: isChecked('enable-bag-cleaning') ? 1 : 0,
         bagCount: getValue('bag-count', 0),
         bagDelay: getValue('bag-delay', 0),
         bagStart: getValue('bag-start', 1),
@@ -1124,7 +1124,6 @@ function resetAllSettings() {
     document.getElementById('wait-time-minute').value = '01';
     
     document.getElementById('enable-bag-cleaning').checked = true;
-    document.getElementById('bag-toggle').value = '1';
     document.getElementById('bag-count').value = '1';
     document.getElementById('bag-delay').value = '2000';
     document.getElementById('bag-start').value = '1';
