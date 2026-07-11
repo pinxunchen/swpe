@@ -502,7 +502,7 @@ function generateSoloJunxu() {
     lines.push('// ====== 軍需任務 ======');
 
     // Group consecutive levels
-    const groups = groupConsecutiveLevels(levels, JUNXU_LEVELS);
+    const groups = groupConsecutiveLevels(levels, JUNXU_LEVELS, 2);
 
     for (const group of groups) {
         const min = group[0];
