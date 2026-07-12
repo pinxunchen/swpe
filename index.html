@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=51">
+    <link rel="stylesheet" href="style.css?v=52">
 </head>
 
 <body>
@@ -246,13 +246,13 @@
                                 </div>
                             </div>
 
-                            <div class="setting-row"
+                             <div class="setting-row"
                                 style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; border-bottom: none; padding-bottom: 0; margin-bottom: 0;">
-                                <div style="display: flex; align-items: center; justify-content: flex-start; gap: 8px;">
+                                <div style="position: relative; display: flex; align-items: center; justify-content: flex-start; gap: 8px; opacity: 0.5;">
                                     <input type="checkbox" id="enable-disable-bag-cleaning-afk" style="display: none;">
                                     <div class="setting-label" style="margin-bottom: 0;">
                                         <label class="setting-toggle">
-                                            <input type="checkbox" id="enable-wuxijian">
+                                            <input type="checkbox" id="enable-wuxijian" disabled>
                                             <span class="checkbox-custom"></span>
                                         </label>
                                         <span>掛機時用無息箭</span>
@@ -261,7 +261,7 @@
                                     </div>
                                     <span
                                         style="font-size: 13px; color: var(--text-muted); white-space: nowrap; margin-left: 4px;">從行囊</span>
-                                    <select id="wuxijian-bag" class="setting-input-sm"
+                                    <select id="wuxijian-bag" class="setting-input-sm" disabled
                                         style="width: 50px; height: 28px; padding: 2px;">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -271,6 +271,9 @@
                                     </select>
                                     <span
                                         style="font-size: 13px; color: var(--text-muted); white-space: nowrap;">拿弓</span>
+                                    
+                                    <!-- Overlay Mask to prevent interaction -->
+                                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: transparent; cursor: not-allowed; z-index: 10;"></div>
                                 </div>
                                 <div></div>
                             </div>
@@ -548,7 +551,7 @@
         <p>SWPE 腳本產生器 — 純前端工具，所有資料僅在您的瀏覽器中處理</p>
     </footer>
 
-    <script src="script.js?v=51"></script>
+    <script src="script.js?v=52"></script>
 </body>
 
 </html>
