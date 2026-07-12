@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=46">
+    <link rel="stylesheet" href="style.css?v=47">
 </head>
 
 <body>
@@ -505,6 +505,27 @@
         </section>
     </main>
 
+    <!-- Modal for Wuxijian Warning -->
+    <div id="wuxijian-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">⚠️ 掛機使用無息箭重要提醒</span>
+                <button class="modal-close-btn" id="wuxijian-modal-close-times">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>跑百人/軍需/官府/副本時先<span class="highlight">「不要裝弓」</span>，並且<span class="highlight">「包包不要放弓」</span>，靠普攻打來節省動畫時間。</p>
+                <ul style="margin-top: 12px; padding-left: 20px; color: var(--text-muted);">
+                    <li style="margin-bottom: 8px;">魯班盒的使用技能<strong style="color: var(--text-primary);">無息箭</strong>要打勾</li>
+                    <li style="margin-bottom: 8px;">魯班盒的自動換特殊要打勾</li>
+                    <li style="margin-bottom: 0;">放弓的行囊建議不要放其他東西，不然也會被拿出來</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="wuxijian-modal-close-btn">我知道了</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Toast notification -->
     <div class="toast" id="toast">
         <span class="toast-icon">✓</span>
@@ -516,7 +537,7 @@
         <p>SWPE 腳本產生器 — 純前端工具，所有資料僅在您的瀏覽器中處理</p>
     </footer>
 
-    <script src="script.js?v=46"></script>
+    <script src="script.js?v=47"></script>
 </body>
 
 </html>

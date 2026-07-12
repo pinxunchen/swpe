@@ -157,10 +157,31 @@ function setupEventListeners() {
         };
         wuxijianEl.addEventListener('change', () => {
             syncWuxijianDependency();
+            if (wuxijianEl.checked) {
+                const modal = document.getElementById('wuxijian-modal');
+                if (modal) {
+                    modal.classList.add('show');
+                }
+            }
             autoGenerate();
         });
         // Run once on load
         syncWuxijianDependency();
+    }
+
+    // Modal close listeners
+    const modal = document.getElementById('wuxijian-modal');
+    if (modal) {
+        const closeModal = () => {
+            modal.classList.remove('show');
+        };
+        const timesBtn = document.getElementById('wuxijian-modal-close-times');
+        const confirmBtn = document.getElementById('wuxijian-modal-close-btn');
+        if (timesBtn) timesBtn.addEventListener('click', closeModal);
+        if (confirmBtn) confirmBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
     }
     // Generate / Copy / Download
 
