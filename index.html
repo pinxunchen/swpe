@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=42">
+    <link rel="stylesheet" href="style.css?v=43">
 </head>
 
 <body>
@@ -208,64 +208,68 @@
                             </div>
                         </div>
 
-                        <div class="setting-row" id="teleport-setting"
-                            style="display: flex; align-items: center; gap: 12px; width: 100%;">
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                <label class="setting-toggle" style="margin-bottom: 0;">
-                                    <input type="checkbox" id="enable-teleport" checked>
-                                    <span class="checkbox-custom"></span>
-                                </label>
-                                <span
-                                    style="font-size: 16px; font-weight: 500; color: var(--text-primary);">使用傳送符</span>
-                                <span class="help-icon" data-tooltip="腳本結束後使用傳送符傳送到紀錄地點繼續掛機&#10;-由上到下1-3">?</span>
-                                <select id="teleport-id" class="setting-input-sm" style="margin-left: 4px;">
-                                    <option value="1">1</option>
-                                    <option value="2" selected>2</option>
-                                    <option value="3">3</option>
-                                </select>
+                        <!-- AFK Settings Sub-Card -->
+                        <div class="setting-sub-card" style="margin-top: 24px; border: 1px solid rgba(42, 53, 80, 0.8); border-radius: var(--radius-md); padding: 18px; background: rgba(13, 18, 30, 0.45); box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);">
+                            <h3 style="font-size: 15px; font-weight: 600; color: var(--gold-light); margin-top: 0; margin-bottom: 14px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid rgba(42, 53, 80, 0.5); padding-bottom: 8px;">
+                                <span>💤</span> 掛機設定 (腳本結束時)
+                            </h3>
+                            
+                            <div class="setting-row" id="teleport-setting"
+                                style="display: flex; align-items: center; gap: 12px; width: 100%; border-bottom: 1px solid rgba(42, 53, 80, 0.4); padding-bottom: 12px; margin-bottom: 12px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <label class="setting-toggle" style="margin-bottom: 0;">
+                                        <input type="checkbox" id="enable-teleport" checked>
+                                        <span class="checkbox-custom"></span>
+                                    </label>
+                                    <span style="font-size: 16px; font-weight: 500; color: var(--text-primary);">使用傳送符</span>
+                                    <span class="help-icon" data-tooltip="腳本結束後使用傳送符傳送到紀錄地點繼續掛機&#10;-由上到下1-3">?</span>
+                                    <select id="teleport-id" class="setting-input-sm" style="margin-left: 4px;">
+                                        <option value="1">1</option>
+                                        <option value="2" selected>2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </div>
+                                <span style="color: var(--gold-light); font-size: 13px; font-weight: 500; margin-left: auto;">⚠️ 記得要把傳送符放到包包不會被清理的位置</span>
                             </div>
-                            <span
-                                style="color: var(--gold-light); font-size: 13px; font-weight: 500; margin-left: auto;">⚠️
-                                記得要把傳送符放到包包不會被清理的位置</span>
-                        </div>
 
-                        <div class="setting-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-                            <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <div class="setting-label" style="margin-bottom: 0;">
-                                    <label class="setting-toggle">
-                                        <input type="checkbox" id="enable-exp-double">
-                                        <span class="checkbox-custom"></span>
-                                    </label>
-                                    <span>掛機吃經驗加成</span>
-                                    <span class="help-icon"
-                                        data-tooltip="啟用後，會在腳本最後自動執行「魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)」，開始吃經驗值加成掛機。">?</span>
+                            <div class="setting-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; border-bottom: 1px solid rgba(42, 53, 80, 0.4); padding-bottom: 12px; margin-bottom: 12px;">
+                                <div style="display: flex; align-items: center; justify-content: space-between;">
+                                    <div class="setting-label" style="margin-bottom: 0;">
+                                        <label class="setting-toggle">
+                                            <input type="checkbox" id="enable-exp-double">
+                                            <span class="checkbox-custom"></span>
+                                        </label>
+                                        <span>掛機吃經驗加成</span>
+                                        <span class="help-icon"
+                                            data-tooltip="啟用後，會在腳本最後自動執行「魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)」，開始吃經驗值加成掛機。">?</span>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: center; justify-content: space-between;">
+                                    <div class="setting-label" style="margin-bottom: 0;">
+                                        <label class="setting-toggle">
+                                            <input type="checkbox" id="enable-retract-general">
+                                            <span class="checkbox-custom"></span>
+                                        </label>
+                                        <span>掛機時收起武將</span>
+                                        <span class="help-icon" data-tooltip="啟用後，會在使用傳送符回去掛機前把武將設定成不出戰">?</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <div class="setting-label" style="margin-bottom: 0;">
-                                    <label class="setting-toggle">
-                                        <input type="checkbox" id="enable-retract-general">
-                                        <span class="checkbox-custom"></span>
-                                    </label>
-                                    <span>掛機時收起武將</span>
-                                    <span class="help-icon" data-tooltip="啟用後，會在使用傳送符回去掛機前把武將設定成不出戰">?</span>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="setting-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-                            <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <div class="setting-label" style="margin-bottom: 0;">
-                                    <label class="setting-toggle">
-                                        <input type="checkbox" id="enable-disable-bag-cleaning-afk">
-                                        <span class="checkbox-custom"></span>
-                                    </label>
-                                    <span>掛機時關閉自動清理背包</span>
-                                    <span class="help-icon"
-                                        data-tooltip="啟用後，會在使用傳送符回去掛機前自動執行「清理背包(0, 0, 0, 0, 0)」，關閉自動清理背包。">?</span>
+                            <div class="setting-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; border-bottom: none; padding-bottom: 0; margin-bottom: 0;">
+                                <div style="display: flex; align-items: center; justify-content: space-between;">
+                                    <div class="setting-label" style="margin-bottom: 0;">
+                                        <label class="setting-toggle">
+                                            <input type="checkbox" id="enable-disable-bag-cleaning-afk">
+                                            <span class="checkbox-custom"></span>
+                                        </label>
+                                        <span>掛機時關閉自動清理背包</span>
+                                        <span class="help-icon"
+                                            data-tooltip="啟用後，會在使用傳送符回去掛機前自動執行「清理背包(0, 0, 0, 0, 0)」，關閉自動清理背包。">?</span>
+                                    </div>
                                 </div>
+                                <div></div>
                             </div>
-                            <div></div>
                         </div>
                     </div>
                 </div>
