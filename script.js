@@ -330,6 +330,7 @@ function getSettings() {
         enableLeaderId: isChecked('enable-leader-id'),
         enableTeamSize: isChecked('enable-team-size'),
         enableExpDouble: isChecked('enable-exp-double'),
+        enableRetractGeneral: isChecked('enable-retract-general'),
     };
 }
 
@@ -493,6 +494,10 @@ function generateSoloScript(settings, moduleOrder) {
     }
     if (settings.enableExpDouble) {
         lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)');
+        lines.push('');
+    }
+    if (settings.enableRetractGeneral) {
+        lines.push('出戰武將(0)');
         lines.push('');
     }
     lines.push('離開並掛機()');
@@ -681,6 +686,10 @@ function generateTeamLeaderScript(settings, moduleOrder) {
     }
     if (settings.enableExpDouble) {
         lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)');
+        lines.push('');
+    }
+    if (settings.enableRetractGeneral) {
+        lines.push('出戰武將(0)');
         lines.push('');
     }
     lines.push('離開並掛機()');
@@ -989,6 +998,10 @@ function generateTeamMemberScript(settings, moduleOrder) {
         lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)');
         lines.push('');
     }
+    if (settings.enableRetractGeneral) {
+        lines.push('出戰武將(0)');
+        lines.push('');
+    }
     lines.push('離開並掛機()');
 
     return lines;
@@ -1133,6 +1146,7 @@ function resetAllSettings() {
     document.getElementById('teleport-id').value = '2';
     
     document.getElementById('enable-exp-double').checked = false;
+    document.getElementById('enable-retract-general').checked = false;
     
     document.getElementById('enable-leader-id').checked = true;
     document.getElementById('leader-id').value = '';

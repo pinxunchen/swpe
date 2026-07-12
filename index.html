@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=40">
+    <link rel="stylesheet" href="style.css?v=41">
 </head>
 
 <body>
@@ -229,15 +229,28 @@
                                 記得要把傳送符放到包包不會被清理的位置</span>
                         </div>
 
-                        <div class="setting-row">
-                            <div class="setting-label">
-                                <label class="setting-toggle">
-                                    <input type="checkbox" id="enable-exp-double">
-                                    <span class="checkbox-custom"></span>
-                                </label>
-                                <span>掛機吃經驗加成</span>
-                                <span class="help-icon"
-                                    data-tooltip="啟用後，會在腳本最後自動執行「魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)」，開始吃經驗值加成掛機。">?</span>
+                        <div class="setting-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <div class="setting-label" style="margin-bottom: 0;">
+                                    <label class="setting-toggle">
+                                        <input type="checkbox" id="enable-exp-double">
+                                        <span class="checkbox-custom"></span>
+                                    </label>
+                                    <span>掛機吃經驗加成</span>
+                                    <span class="help-icon"
+                                        data-tooltip="啟用後，會在腳本最後自動執行「魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)」，開始吃經驗值加成掛機。">?</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <div class="setting-label" style="margin-bottom: 0;">
+                                    <label class="setting-toggle">
+                                        <input type="checkbox" id="enable-retract-general">
+                                        <span class="checkbox-custom"></span>
+                                    </label>
+                                    <span>掛機時收起武將</span>
+                                    <span class="help-icon"
+                                        data-tooltip="啟用後，會在腳本結束、開始掛機前自動執行「出戰武將(0)」，收回出戰中的武將。">?</span>
+                                </div>
                             </div>
                         </div>
                     </div>
