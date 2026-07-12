@@ -142,7 +142,25 @@ function setupEventListeners() {
             }
         });
     }
-
+    // Wuxijian setting dependency link
+    const wuxijianEl = document.getElementById('enable-wuxijian');
+    const bagCleanAfkEl = document.getElementById('enable-disable-bag-cleaning-afk');
+    if (wuxijianEl && bagCleanAfkEl) {
+        const syncWuxijianDependency = () => {
+            if (wuxijianEl.checked) {
+                bagCleanAfkEl.checked = true;
+                bagCleanAfkEl.disabled = true;
+            } else {
+                bagCleanAfkEl.disabled = false;
+            }
+        };
+        wuxijianEl.addEventListener('change', () => {
+            syncWuxijianDependency();
+            autoGenerate();
+        });
+        // Run once on load
+        syncWuxijianDependency();
+    }
     // Generate / Copy / Download
 
     document.getElementById('btn-reset').addEventListener('click', resetAllSettings);
@@ -332,6 +350,8 @@ function getSettings() {
         enableExpDouble: isChecked('enable-exp-double'),
         enableRetractGeneral: isChecked('enable-retract-general'),
         enableDisableBagCleaningAfk: isChecked('enable-disable-bag-cleaning-afk'),
+        enableWuxijian: isChecked('enable-wuxijian'),
+        wuxijianBag: getValue('wuxijian-bag', 4),
     };
 }
 
@@ -501,7 +521,16 @@ function generateSoloScript(settings, moduleOrder) {
         lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)');
         lines.push('');
     }
-    lines.push('離開並掛機()');
+    if (settings.enableWuxijian) {
+        const args = [0, 0, 0, 0, 0];
+        const bagIdx = parseInt(settings.wuxijianBag, 10) - 1;
+        if (bagIdx >= 0 && bagIdx < 5) {
+            args[bagIdx] = 1;
+        }
+        lines.push(`離開並掛機(${args.join(', ')})`);
+    } else {
+        lines.push('離開並掛機()');
+    }
 
     return lines;
 }
@@ -697,7 +726,16 @@ function generateTeamLeaderScript(settings, moduleOrder) {
         lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)');
         lines.push('');
     }
-    lines.push('離開並掛機()');
+    if (settings.enableWuxijian) {
+        const args = [0, 0, 0, 0, 0];
+        const bagIdx = parseInt(settings.wuxijianBag, 10) - 1;
+        if (bagIdx >= 0 && bagIdx < 5) {
+            args[bagIdx] = 1;
+        }
+        lines.push(`離開並掛機(${args.join(', ')})`);
+    } else {
+        lines.push('離開並掛機()');
+    }
 
     return lines;
 }
@@ -1011,7 +1049,16 @@ function generateTeamMemberScript(settings, moduleOrder) {
         lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)');
         lines.push('');
     }
-    lines.push('離開並掛機()');
+    if (settings.enableWuxijian) {
+        const args = [0, 0, 0, 0, 0];
+        const bagIdx = parseInt(settings.wuxijianBag, 10) - 1;
+        if (bagIdx >= 0 && bagIdx < 5) {
+            args[bagIdx] = 1;
+        }
+        lines.push(`離開並掛機(${args.join(', ')})`);
+    } else {
+        lines.push('離開並掛機()');
+    }
 
     return lines;
 }
@@ -1156,7 +1203,21 @@ function resetAllSettings() {
     
     document.getElementById('enable-exp-double').checked = false;
     document.getElementById('enable-retract-general').checked = false;
-    document.getElementById('enable-disable-bag-cleaning-afk').checked = false;
+    
+    const bagCleanAfkEl = document.getElementById('enable-disable-bag-cleaning-afk');
+    if (bagCleanAfkEl) {
+        bagCleanAfkEl.checked = false;
+        bagCleanAfkEl.disabled = false;
+    }
+    
+    const wuxijianEl = document.getElementById('enable-wuxijian');
+    if (wuxijianEl) {
+        wuxijianEl.checked = false;
+    }
+    const wuxijianBagEl = document.getElementById('wuxijian-bag');
+    if (wuxijianBagEl) {
+        wuxijianBagEl.value = '4';
+    }
     
     document.getElementById('enable-leader-id').checked = true;
     document.getElementById('leader-id').value = '';

@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=43">
+    <link rel="stylesheet" href="style.css?v=44">
 </head>
 
 <body>
@@ -268,7 +268,26 @@
                                             data-tooltip="啟用後，會在使用傳送符回去掛機前自動執行「清理背包(0, 0, 0, 0, 0)」，關閉自動清理背包。">?</span>
                                     </div>
                                 </div>
-                                <div></div>
+                                <div style="display: flex; align-items: center; justify-content: flex-start; gap: 8px;">
+                                    <div class="setting-label" style="margin-bottom: 0;">
+                                        <label class="setting-toggle">
+                                            <input type="checkbox" id="enable-wuxijian">
+                                            <span class="checkbox-custom"></span>
+                                        </label>
+                                        <span>掛機時用無息箭</span>
+                                        <span class="help-icon"
+                                            data-tooltip="跑百人/軍需/官府/副本時先&quot;不要裝弓&quot;來節省動畫時間&#10;-魯班盒的使用技能無息箭要打勾&#10;-魯班盒的自動換特殊要打勾&#10;-回去用">?</span>
+                                    </div>
+                                    <span style="font-size: 13px; color: var(--text-muted); white-space: nowrap; margin-left: 4px;">從行囊</span>
+                                    <select id="wuxijian-bag" class="setting-input-sm" style="width: 50px; height: 28px; padding: 2px;">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4" selected>4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                    <span style="font-size: 13px; color: var(--text-muted); white-space: nowrap;">拿弓</span>
+                                </div>
                             </div>
                         </div>
                     </div>
