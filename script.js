@@ -488,16 +488,16 @@ function generateSoloScript(settings, moduleOrder) {
         lines.push('清理背包(0, 0, 0, 0, 0)');
         lines.push('');
     }
+    if (settings.enableRetractGeneral) {
+        lines.push('出戰武將(0)');
+        lines.push('');
+    }
     if (settings.enableTeleport) {
         lines.push(`使用傳送符(${settings.teleportId})`);
         lines.push('');
     }
     if (settings.enableExpDouble) {
         lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)');
-        lines.push('');
-    }
-    if (settings.enableRetractGeneral) {
-        lines.push('出戰武將(0)');
         lines.push('');
     }
     lines.push('離開並掛機()');
@@ -680,16 +680,16 @@ function generateTeamLeaderScript(settings, moduleOrder) {
     }
 
     // Footer
+    if (settings.enableRetractGeneral) {
+        lines.push('出戰武將(0)');
+        lines.push('');
+    }
     if (settings.enableTeleport) {
         lines.push(`使用傳送符(${settings.teleportId})`);
         lines.push('');
     }
     if (settings.enableExpDouble) {
         lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)');
-        lines.push('');
-    }
-    if (settings.enableRetractGeneral) {
-        lines.push('出戰武將(0)');
         lines.push('');
     }
     lines.push('離開並掛機()');
@@ -990,16 +990,16 @@ function generateTeamMemberScript(settings, moduleOrder) {
     }
 
     // Footer
+    if (settings.enableRetractGeneral) {
+        lines.push('出戰武將(0)');
+        lines.push('');
+    }
     if (settings.enableTeleport) {
         lines.push(`使用傳送符(${settings.teleportId})`);
         lines.push('');
     }
     if (settings.enableExpDouble) {
         lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)');
-        lines.push('');
-    }
-    if (settings.enableRetractGeneral) {
-        lines.push('出戰武將(0)');
         lines.push('');
     }
     lines.push('離開並掛機()');
