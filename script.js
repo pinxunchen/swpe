@@ -151,6 +151,7 @@ function setupEventListeners() {
                 bagCleanAfkEl.checked = true;
                 bagCleanAfkEl.disabled = true;
             } else {
+                bagCleanAfkEl.checked = false;
                 bagCleanAfkEl.disabled = false;
             }
         };
