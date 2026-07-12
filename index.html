@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=41">
+    <link rel="stylesheet" href="style.css?v=42">
 </head>
 
 <body>
@@ -251,6 +251,21 @@
                                     <span class="help-icon" data-tooltip="啟用後，會在使用傳送符回去掛機前把武將設定成不出戰">?</span>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="setting-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <div class="setting-label" style="margin-bottom: 0;">
+                                    <label class="setting-toggle">
+                                        <input type="checkbox" id="enable-disable-bag-cleaning-afk">
+                                        <span class="checkbox-custom"></span>
+                                    </label>
+                                    <span>掛機時關閉自動清理背包</span>
+                                    <span class="help-icon"
+                                        data-tooltip="啟用後，會在使用傳送符回去掛機前自動執行「清理背包(0, 0, 0, 0, 0)」，關閉自動清理背包。">?</span>
+                                </div>
+                            </div>
+                            <div></div>
                         </div>
                     </div>
                 </div>

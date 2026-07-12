@@ -331,6 +331,7 @@ function getSettings() {
         enableTeamSize: isChecked('enable-team-size'),
         enableExpDouble: isChecked('enable-exp-double'),
         enableRetractGeneral: isChecked('enable-retract-general'),
+        enableDisableBagCleaningAfk: isChecked('enable-disable-bag-cleaning-afk'),
     };
 }
 
@@ -484,7 +485,7 @@ function generateSoloScript(settings, moduleOrder) {
     // Footer
     lines.push('延遲毫秒(20000)');
     lines.push('');
-    if (settings.enableBagCleaning) {
+    if (settings.enableDisableBagCleaningAfk) {
         lines.push('清理背包(0, 0, 0, 0, 0)');
         lines.push('');
     }
@@ -680,6 +681,10 @@ function generateTeamLeaderScript(settings, moduleOrder) {
     }
 
     // Footer
+    if (settings.enableDisableBagCleaningAfk) {
+        lines.push('清理背包(0, 0, 0, 0, 0)');
+        lines.push('');
+    }
     if (settings.enableRetractGeneral) {
         lines.push('出戰武將(0)');
         lines.push('');
@@ -990,6 +995,10 @@ function generateTeamMemberScript(settings, moduleOrder) {
     }
 
     // Footer
+    if (settings.enableDisableBagCleaningAfk) {
+        lines.push('清理背包(0, 0, 0, 0, 0)');
+        lines.push('');
+    }
     if (settings.enableRetractGeneral) {
         lines.push('出戰武將(0)');
         lines.push('');
@@ -1147,6 +1156,7 @@ function resetAllSettings() {
     
     document.getElementById('enable-exp-double').checked = false;
     document.getElementById('enable-retract-general').checked = false;
+    document.getElementById('enable-disable-bag-cleaning-afk').checked = false;
     
     document.getElementById('enable-leader-id').checked = true;
     document.getElementById('leader-id').value = '';
