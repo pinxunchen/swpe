@@ -183,6 +183,45 @@ function setupEventListeners() {
             if (e.target === modal) closeModal();
         });
     }
+
+    // Bag clean confirm modal logic
+    const bagCleaningEl = document.getElementById('enable-bag-cleaning');
+    const bagCleanConfirmModal = document.getElementById('bag-clean-confirm-modal');
+    if (bagCleaningEl && bagCleanConfirmModal) {
+        bagCleaningEl.addEventListener('click', (e) => {
+            if (!bagCleaningEl.checked) {
+                // Prevent check change
+                e.preventDefault();
+                // Show modal
+                bagCleanConfirmModal.classList.add('show');
+            }
+        });
+
+        const confirmYesBtn = document.getElementById('bag-clean-confirm-yes');
+        const confirmNoBtn = document.getElementById('bag-clean-confirm-no');
+        if (confirmYesBtn) {
+            confirmYesBtn.addEventListener('click', () => {
+                bagCleaningEl.checked = false;
+                bagCleanConfirmModal.classList.remove('show');
+                autoGenerate();
+            });
+        }
+        if (confirmNoBtn) {
+            confirmNoBtn.addEventListener('click', () => {
+                bagCleaningEl.checked = true;
+                bagCleanConfirmModal.classList.remove('show');
+                autoGenerate();
+            });
+        }
+        bagCleanConfirmModal.addEventListener('click', (e) => {
+            if (e.target === bagCleanConfirmModal) {
+                // If they click background, default to keep checked
+                bagCleaningEl.checked = true;
+                bagCleanConfirmModal.classList.remove('show');
+                autoGenerate();
+            }
+        });
+    }
     // Generate / Copy / Download
 
     document.getElementById('btn-reset').addEventListener('click', resetAllSettings);

@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=50">
+    <link rel="stylesheet" href="style.css?v=51">
 </head>
 
 <body>
@@ -421,7 +421,7 @@
                                         <input type="checkbox" id="enable-bag-number" checked>
                                         <span class="checkbox-custom"></span>
                                     </label>
-                                    <span>行囊編號</span>
+                                    <span>副本戰利品放入行囊編號</span>
                                     <span class="help-icon"
                                         data-tooltip="放物品入行囊(物品列表, 行囊編號)&#10;指定副本戰利品要放入的行囊編號，由左到右1到5">?</span>
                                 </div>
@@ -519,6 +519,24 @@
         </div>
     </div>
 
+    <!-- Modal for Bag Clean Confirm -->
+    <div id="bag-clean-confirm-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 420px;">
+            <div class="modal-header">
+                <span class="modal-title">⚠️ 注意事項</span>
+            </div>
+            <div class="modal-body" style="padding: 10px 0;">
+                <p style="margin: 0; line-height: 1.6; color: var(--text-primary);">
+                    如果清理背包沒有打勾，會導致背包爆滿影響腳本運行。<br><br>確定還是要取消打勾嗎？
+                </p>
+            </div>
+            <div class="modal-footer" style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 20px;">
+                <button class="btn btn-secondary" id="bag-clean-confirm-no">否 (保持打勾)</button>
+                <button class="btn btn-danger" id="bag-clean-confirm-yes">是 (確定取消)</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Toast notification -->
     <div class="toast" id="toast">
         <span class="toast-icon">✓</span>
@@ -530,7 +548,7 @@
         <p>SWPE 腳本產生器 — 純前端工具，所有資料僅在您的瀏覽器中處理</p>
     </footer>
 
-    <script src="script.js?v=50"></script>
+    <script src="script.js?v=51"></script>
 </body>
 
 </html>
