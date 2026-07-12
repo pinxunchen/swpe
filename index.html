@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=45">
+    <link rel="stylesheet" href="style.css?v=46">
 </head>
 
 <body>
@@ -217,7 +217,7 @@
                             </h3>
 
                             <div class="setting-row" id="teleport-setting"
-                                style="display: flex; align-items: center; gap: 12px; width: 100%; border-bottom: 1px solid rgba(42, 53, 80, 0.4); padding-bottom: 12px; margin-bottom: 12px;">
+                                style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; border-bottom: 1px solid rgba(42, 53, 80, 0.4); padding-bottom: 12px; margin-bottom: 12px;">
                                 <div style="display: flex; align-items: center; gap: 8px;">
                                     <label class="setting-toggle" style="margin-bottom: 0;">
                                         <input type="checkbox" id="enable-teleport" checked>
@@ -232,9 +232,9 @@
                                         <option value="3">3</option>
                                     </select>
                                 </div>
-                                <span
-                                    style="color: var(--gold-light); font-size: 13px; font-weight: 500; margin-left: auto;">⚠️
-                                    記得要把傳送符放到包包不會被清理的位置</span>
+                                <div style="display: flex; align-items: center; justify-content: flex-start;">
+                                    <span style="color: var(--gold-light); font-size: 13px; font-weight: 500;">⚠️ 記得要把傳送符放到包包不會被清理的位置</span>
+                                </div>
                             </div>
 
                             <div class="setting-row"
@@ -516,7 +516,7 @@
         <p>SWPE 腳本產生器 — 純前端工具，所有資料僅在您的瀏覽器中處理</p>
     </footer>
 
-    <script src="script.js?v=45"></script>
+    <script src="script.js?v=46"></script>
 </body>
 
 </html>
