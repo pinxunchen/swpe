@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=55">
+    <link rel="stylesheet" href="style.css?v=56">
 </head>
 
 <body>
@@ -136,7 +136,7 @@
                                     </label>
                                     <span>腳本啟動時間</span>
                                     <span class="help-icon"
-                                        data-tooltip="等待時間(時間): 冒號必須是英文冒號，時間以24小時制表達&#10;例如: &quot;16:55&quot; = 腳本會在 4:55 p.m. 時繼續執行&#10;若當前時間已超過，將等到隔天同一時間">?</span>
+                                        data-tooltip="等待時間(時間): 時間以24小時制表達&#10;例如: &quot;16:55&quot; = 腳本會在 4:55 p.m. 時繼續執行&#10;若當前時間已超過，將等到隔天同一時間">?</span>
                                 </div>
                                 <div class="time-picker-wrapper" style="display: flex; align-items: center; gap: 4px;">
                                     <input type="text" id="wait-time-hour" class="setting-input-sm"
@@ -171,11 +171,14 @@
                                     </label>
                                     <span>腳本啟動後出戰武將</span>
                                     <span class="help-icon"
-                                        data-tooltip="如果不知道武將編號，請在swpe標題列的「工具」選「開啟監視器」，再到遊戲內讓該武將出戰即可看到武將編號&#10;-掛機時單掛者適用">?</span>
+                                        data-tooltip="如果不知道武將編號，請在swpe標題列的「工具」選「開啟監視器」，再到遊戲內讓該武將出戰即可在監視器看到武將編號&#10;-掛機時單掛者適用">?</span>
                                 </div>
                                 <input type="text" id="deploy-general-id" class="setting-input-sm"
-                                    style="width: 80px; text-align: center; height: 28px; padding: 2px;" placeholder="武將編號">
-                                <span style="color: var(--gold-light); font-size: 13px; font-weight: 500; margin-left: 4px; white-space: nowrap;">⚠️ 掛機單掛者專用</span>
+                                    style="width: 80px; text-align: center; height: 28px; padding: 2px;"
+                                    placeholder="武將編號">
+                                <span
+                                    style="color: var(--gold-light); font-size: 13px; font-weight: 500; margin-left: 4px; white-space: nowrap;">⚠️
+                                    掛機單掛者專用</span>
                             </div>
                             <div></div>
                         </div>
@@ -582,7 +585,7 @@
         <p>SWPE 腳本產生器 — 純前端工具，所有資料僅在您的瀏覽器中處理</p>
     </footer>
 
-    <script src="script.js?v=55"></script>
+    <script src="script.js?v=56"></script>
 </body>
 
 </html>
