@@ -1371,3 +1371,18 @@ select option {
     justify-content: flex-end;
     margin-top: 24px;
 }
+
+.sub-cards-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 24px;
+    width: 100%;
+}
+
+@media (max-width: 992px) {
+    .sub-cards-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
