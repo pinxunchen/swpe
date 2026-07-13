@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=62">
+    <link rel="stylesheet" href="style.css?v=63">
 </head>
 
 <body>
@@ -237,25 +237,25 @@
 
                                 <div class="setting-row" id="teleport-setting"
                                     style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; border-bottom: 1px solid rgba(42, 53, 80, 0.4); padding-bottom: 12px; margin-bottom: 12px;">
-                                    <div style="display: flex; align-items: center; gap: 8px;">
-                                        <label class="setting-toggle" style="margin-bottom: 0;">
-                                            <input type="checkbox" id="enable-teleport" checked>
-                                            <span class="checkbox-custom"></span>
-                                        </label>
-                                        <span
-                                            style="font-size: 16px; font-weight: 500; color: var(--text-primary);">使用傳送符</span>
-                                        <span class="help-icon"
-                                            data-tooltip="腳本結束後使用傳送符傳送到紀錄地點繼續掛機&#10;-由上到下1-3">?</span>
-                                        <select id="teleport-id" class="setting-input-sm" style="margin-left: 4px;">
-                                            <option value="1">1</option>
-                                            <option value="2" selected>2</option>
-                                            <option value="3">3</option>
-                                        </select>
+                                    <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 4px;">
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <label class="setting-toggle" style="margin-bottom: 0;">
+                                                <input type="checkbox" id="enable-teleport" checked>
+                                                <span class="checkbox-custom"></span>
+                                            </label>
+                                            <span
+                                                style="font-size: 16px; font-weight: 500; color: var(--text-primary);">使用傳送符</span>
+                                            <span class="help-icon"
+                                                data-tooltip="腳本結束後使用傳送符傳送到紀錄地點繼續掛機&#10;-由上到下1-3">?</span>
+                                            <select id="teleport-id" class="setting-input-sm" style="margin-left: 4px;">
+                                                <option value="1">1</option>
+                                                <option value="2" selected>2</option>
+                                                <option value="3">3</option>
+                                            </select>
+                                        </div>
+                                        <span style="color: var(--gold-light); font-size: 13px; font-weight: 500; margin-left: 28px; line-height: 1; white-space: nowrap;">⚠️ 要把傳送符放到不會被清理的位置</span>
                                     </div>
-                                    <div style="display: flex; align-items: center; justify-content: flex-start;">
-                                        <span style="color: var(--gold-light); font-size: 13px; font-weight: 500;">⚠️
-                                            要把傳送符放到不會被清理的位置</span>
-                                    </div>
+                                    <div></div>
                                 </div>
 
                                 <div class="setting-row"
@@ -601,7 +601,7 @@
         <p>SWPE 腳本產生器 — 純前端工具，所有資料僅在您的瀏覽器中處理</p>
     </footer>
 
-    <script src="script.js?v=62"></script>
+    <script src="script.js?v=63"></script>
 </body>
 
 </html>
