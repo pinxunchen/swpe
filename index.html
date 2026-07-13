@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=57">
+    <link rel="stylesheet" href="style.css?v=58">
 </head>
 
 <body>
@@ -77,10 +77,9 @@
                     <!-- Team Settings (only in team mode) -->
                     <div id="team-settings-group"
                         style="display:none; margin-top: 10px; border-top: 1px solid rgba(42,53,80,0.5); padding-top: 10px;">
-                        <div style="display: flex; gap: 16px; align-items: center; width: 100%; flex-wrap: wrap;">
-                            <div
-                                style="display: flex; align-items: center; justify-content: flex-start; gap: 8px; flex: 1; min-width: 140px;">
-                                <div class="setting-label" style="margin-bottom: 0; white-space: nowrap;">
+                        <div style="display: flex; flex-direction: column; gap: 12px; width: 100%; padding-top: 4px;">
+                            <div style="display: flex; align-items: center; justify-content: flex-start; gap: 8px; width: 100%;">
+                                <div class="setting-label" style="margin-bottom: 0; white-space: nowrap; width: 95px; display: inline-flex; justify-content: flex-start; align-items: center;">
                                     <label class="setting-toggle" style="margin-right: 4px;">
                                         <input type="checkbox" id="enable-leader-id" checked>
                                         <span class="checkbox-custom"></span>
@@ -92,9 +91,8 @@
                                     style="width: 120px; height: 34px; padding: 4px 8px; font-size: 15px;"
                                     placeholder="輸入編號" value="">
                             </div>
-                            <div
-                                style="display: flex; align-items: center; justify-content: flex-start; gap: 8px; flex: 1; min-width: 120px;">
-                                <div class="setting-label" style="margin-bottom: 0; white-space: nowrap;">
+                            <div style="display: flex; align-items: center; justify-content: flex-start; gap: 8px; width: 100%;">
+                                <div class="setting-label" style="margin-bottom: 0; white-space: nowrap; width: 95px; display: inline-flex; justify-content: flex-start; align-items: center;">
                                     <label class="setting-toggle" style="margin-right: 4px;">
                                         <input type="checkbox" id="enable-team-size" checked>
                                         <span class="checkbox-custom"></span>
@@ -585,7 +583,7 @@
         <p>SWPE 腳本產生器 — 純前端工具，所有資料僅在您的瀏覽器中處理</p>
     </footer>
 
-    <script src="script.js?v=57"></script>
+    <script src="script.js?v=58"></script>
 </body>
 
 </html>
