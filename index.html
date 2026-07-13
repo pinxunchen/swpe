@@ -156,7 +156,7 @@
                                 style="display: flex; align-items: center; justify-content: flex-start; gap: 8px; margin-top: 6px;">
                                 <div class="setting-label" style="margin-bottom: 0;">
                                     <label class="setting-toggle">
-                                        <input type="checkbox" id="enable-stop-exp-double">
+                                        <input type="checkbox" id="enable-stop-exp-double" checked>
                                         <span class="checkbox-custom"></span>
                                     </label>
                                     <span>腳本啟動後停止吃經驗加成</span>
@@ -177,16 +177,16 @@
                                     <input type="text" id="deploy-general-id" class="setting-input-sm"
                                         style="width: 80px; text-align: center; height: 28px; padding: 2px;"
                                         placeholder="武將編號">
-                                    <span class="help-icon help-icon-text"
-                                        data-tooltip="如果不知道武將編號，請在swpe標題列的「工具」選「開啟監視器」，再到遊戲內讓該武將出戰即可在監視器看到武將編號&#10;-掛機時單掛者適用">如何查編號?</span>
+                                    <span class="help-icon"
+                                        data-tooltip="如果不知道武將編號，請在swpe標題列的「工具」選「開啟監視器」，再到遊戲內讓該武將出戰即可在監視器看到武將編號">如何查編號?</span>
                                 </div>
                                 <span
                                     style="color: var(--gold-light); font-size: 13px; font-weight: 500; margin-left: 28px; line-height: 1; white-space: nowrap;">⚠️
-                                    掛機單掛者專用</span>
+                                    掛機單掛者專用，原本就帶武將掛機的人不用勾選這邊</span>
                             </div>
                         </div>
 
-                        <div class="setting-row">
+                        <div class="setting-row" style="justify-content: flex-start;">
                             <div class="setting-label">
                                 <label class="setting-toggle">
                                     <input type="checkbox" id="enable-bag-cleaning" checked>
@@ -266,7 +266,7 @@
                                     <div style="display: flex; align-items: center; justify-content: space-between;">
                                         <div class="setting-label" style="margin-bottom: 0;">
                                             <label class="setting-toggle">
-                                                <input type="checkbox" id="enable-exp-double">
+                                                <input type="checkbox" id="enable-exp-double" checked>
                                                 <span class="checkbox-custom"></span>
                                             </label>
                                             <span>掛機吃經驗加成</span>
