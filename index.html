@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=53">
+    <link rel="stylesheet" href="style.css?v=54">
 </head>
 
 <body>
@@ -157,9 +157,26 @@
                                     </label>
                                     <span>腳本啟動後停止吃經驗加成</span>
                                     <span class="help-icon"
-                                        data-tooltip="啟用後，會在腳本啟動時自動執行「魯班盒攻擊(1, 0, 0, 0, 1, 0, 0)」，停止吃經驗值加成。">?</span>
+                                        data-tooltip="啟用後，會在腳本啟動開始打百人/官府/軍需/副本時自動停止吃經驗值加成，以節省福神。">?</span>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="setting-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                            <div style="display: flex; align-items: center; justify-content: flex-start; gap: 8px;">
+                                <div class="setting-label" style="margin-bottom: 0;">
+                                    <label class="setting-toggle">
+                                        <input type="checkbox" id="enable-deploy-general">
+                                        <span class="checkbox-custom"></span>
+                                    </label>
+                                    <span>腳本啟動後出戰武將</span>
+                                    <span class="help-icon"
+                                        data-tooltip="如果不知道武將編號，請在swpe標題列的「工具」選「開啟監視器」，再到遊戲內讓該武將出戰即可看到武將編號&#10;-掛機時單掛者適用">?</span>
+                                </div>
+                                <input type="text" id="deploy-general-id" class="setting-input-sm"
+                                    style="width: 80px; text-align: center; height: 28px; padding: 2px;" placeholder="武將編號">
+                            </div>
+                            <div></div>
                         </div>
 
                         <div class="setting-row">
@@ -256,9 +273,10 @@
                                 </div>
                             </div>
 
-                             <div class="setting-row"
+                            <div class="setting-row"
                                 style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; border-bottom: none; padding-bottom: 0; margin-bottom: 0;">
-                                <div style="position: relative; display: flex; align-items: center; justify-content: flex-start; gap: 8px; opacity: 0.5;">
+                                <div
+                                    style="position: relative; display: flex; align-items: center; justify-content: flex-start; gap: 8px; opacity: 0.5;">
                                     <input type="checkbox" id="enable-disable-bag-cleaning-afk" style="display: none;">
                                     <div class="setting-label" style="margin-bottom: 0;">
                                         <label class="setting-toggle">
@@ -281,9 +299,11 @@
                                     </select>
                                     <span
                                         style="font-size: 13px; color: var(--text-muted); white-space: nowrap;">拿弓</span>
-                                    
+
                                     <!-- Overlay Mask to prevent interaction -->
-                                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: transparent; cursor: not-allowed; z-index: 10;"></div>
+                                    <div
+                                        style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: transparent; cursor: not-allowed; z-index: 10;">
+                                    </div>
                                 </div>
                                 <div></div>
                             </div>
@@ -561,7 +581,7 @@
         <p>SWPE 腳本產生器 — 純前端工具，所有資料僅在您的瀏覽器中處理</p>
     </footer>
 
-    <script src="script.js?v=53"></script>
+    <script src="script.js?v=54"></script>
 </body>
 
 </html>

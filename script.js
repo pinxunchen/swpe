@@ -410,6 +410,8 @@ function getSettings() {
         enableTeamSize: isChecked('enable-team-size'),
         enableExpDouble: isChecked('enable-exp-double'),
         enableStopExpDouble: isChecked('enable-stop-exp-double'),
+        enableDeployGeneral: isChecked('enable-deploy-general'),
+        deployGeneralId: document.getElementById('deploy-general-id')?.value.trim() || '0',
         enableRetractGeneral: isChecked('enable-retract-general'),
         enableDisableBagCleaningAfk: isChecked('enable-disable-bag-cleaning-afk'),
         enableWuxijian: isChecked('enable-wuxijian'),
@@ -537,6 +539,11 @@ function generateSoloScript(settings, moduleOrder) {
 
     if (settings.enableStopExpDouble) {
         lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 0)');
+        lines.push('');
+    }
+
+    if (settings.enableDeployGeneral) {
+        lines.push(`出戰武將(${settings.deployGeneralId})`);
         lines.push('');
     }
 
@@ -742,6 +749,11 @@ function generateTeamLeaderScript(settings, moduleOrder) {
 
     if (settings.enableStopExpDouble) {
         lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 0)');
+        lines.push('');
+    }
+
+    if (settings.enableDeployGeneral) {
+        lines.push(`出戰武將(${settings.deployGeneralId})`);
         lines.push('');
     }
 
@@ -1076,6 +1088,11 @@ function generateTeamMemberScript(settings, moduleOrder) {
         lines.push('');
     }
 
+    if (settings.enableDeployGeneral) {
+        lines.push(`出戰武將(${settings.deployGeneralId})`);
+        lines.push('');
+    }
+
     if (settings.enableBagCleaning) {
         lines.push(`清理背包(${settings.bagToggle}, ${settings.bagCount}, ${settings.bagDelay}, ${settings.bagStart}, ${settings.bagEnd})`);
         lines.push('');
@@ -1280,6 +1297,8 @@ function resetAllSettings() {
     
     document.getElementById('enable-exp-double').checked = false;
     document.getElementById('enable-stop-exp-double').checked = false;
+    document.getElementById('enable-deploy-general').checked = false;
+    document.getElementById('deploy-general-id').value = '';
     document.getElementById('enable-retract-general').checked = false;
     
     const bagCleanAfkEl = document.getElementById('enable-disable-bag-cleaning-afk');
