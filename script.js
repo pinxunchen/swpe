@@ -883,6 +883,8 @@ function generateTeamBairenLeader(settings) {
         }
 
         // 隊長等待+解任
+        lines.push('自動導航(16001)');
+        lines.push('');
         lines.push('if 玩家編號等於(隊長)');
         lines.push('{');
         lines.push('');
@@ -1203,6 +1205,8 @@ function generateTeamBairenMember(settings) {
         }
 
         // 隊員加入隊伍等待
+        lines.push('自動導航(16001)');
+        lines.push('');
         lines.push(`詢問位置並加入隊伍(${leaderVar}, ${sizeVar})`);
         lines.push('等隊伍人數(1)');
         lines.push('');
