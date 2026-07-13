@@ -409,6 +409,7 @@ function getSettings() {
         enableLeaderId: isChecked('enable-leader-id'),
         enableTeamSize: isChecked('enable-team-size'),
         enableExpDouble: isChecked('enable-exp-double'),
+        enableStopExpDouble: isChecked('enable-stop-exp-double'),
         enableRetractGeneral: isChecked('enable-retract-general'),
         enableDisableBagCleaningAfk: isChecked('enable-disable-bag-cleaning-afk'),
         enableWuxijian: isChecked('enable-wuxijian'),
@@ -533,6 +534,11 @@ function generateSoloScript(settings, moduleOrder) {
     }
 
 
+
+    if (settings.enableStopExpDouble) {
+        lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 0)');
+        lines.push('');
+    }
 
     if (settings.enableBagCleaning) {
         lines.push(`清理背包(${settings.bagToggle}, ${settings.bagCount}, ${settings.bagDelay}, ${settings.bagStart}, ${settings.bagEnd})`);
@@ -731,6 +737,11 @@ function generateTeamLeaderScript(settings, moduleOrder) {
         lines.push('    以位置放入行囊(物品位置, 行囊編號);');
         lines.push('    延遲毫秒(150);');
         lines.push('}');
+        lines.push('');
+    }
+
+    if (settings.enableStopExpDouble) {
+        lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 0)');
         lines.push('');
     }
 
@@ -1060,6 +1071,11 @@ function generateTeamMemberScript(settings, moduleOrder) {
         lines.push('');
     }
 
+    if (settings.enableStopExpDouble) {
+        lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 0)');
+        lines.push('');
+    }
+
     if (settings.enableBagCleaning) {
         lines.push(`清理背包(${settings.bagToggle}, ${settings.bagCount}, ${settings.bagDelay}, ${settings.bagStart}, ${settings.bagEnd})`);
         lines.push('');
@@ -1263,6 +1279,7 @@ function resetAllSettings() {
     document.getElementById('teleport-id').value = '2';
     
     document.getElementById('enable-exp-double').checked = false;
+    document.getElementById('enable-stop-exp-double').checked = false;
     document.getElementById('enable-retract-general').checked = false;
     
     const bagCleanAfkEl = document.getElementById('enable-disable-bag-cleaning-afk');

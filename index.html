@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=52">
+    <link rel="stylesheet" href="style.css?v=53">
 </head>
 
 <body>
@@ -149,7 +149,17 @@
                                         maxlength="2" placeholder="MM" value="01">
                                 </div>
                             </div>
-                            <div></div>
+                            <div style="display: flex; align-items: center; justify-content: flex-start; gap: 8px;">
+                                <div class="setting-label" style="margin-bottom: 0;">
+                                    <label class="setting-toggle">
+                                        <input type="checkbox" id="enable-stop-exp-double">
+                                        <span class="checkbox-custom"></span>
+                                    </label>
+                                    <span>腳本啟動後停止吃經驗加成</span>
+                                    <span class="help-icon"
+                                        data-tooltip="啟用後，會在腳本啟動時自動執行「魯班盒攻擊(1, 0, 0, 0, 1, 0, 0)」，停止吃經驗值加成。">?</span>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="setting-row">
@@ -551,7 +561,7 @@
         <p>SWPE 腳本產生器 — 純前端工具，所有資料僅在您的瀏覽器中處理</p>
     </footer>
 
-    <script src="script.js?v=52"></script>
+    <script src="script.js?v=53"></script>
 </body>
 
 </html>
