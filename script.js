@@ -219,6 +219,23 @@ function setupEventListeners() {
             }
         });
     }
+    // Deploy general validation styling
+    const deployGeneralCheckbox = document.getElementById('enable-deploy-general');
+    const deployGeneralInput = document.getElementById('deploy-general-id');
+    if (deployGeneralCheckbox && deployGeneralInput) {
+        const updateDeployGeneralUI = () => {
+            if (deployGeneralCheckbox.checked && !deployGeneralInput.value.trim()) {
+                deployGeneralInput.style.border = '2px solid #ef4444';
+                deployGeneralInput.style.boxShadow = '0 0 0 2px rgba(239, 68, 68, 0.2)';
+            } else {
+                deployGeneralInput.style.border = '';
+                deployGeneralInput.style.boxShadow = '';
+            }
+        };
+        deployGeneralCheckbox.addEventListener('change', updateDeployGeneralUI);
+        deployGeneralInput.addEventListener('input', updateDeployGeneralUI);
+    }
+
     // Generate / Copy / Download
 
     document.getElementById('btn-reset').addEventListener('click', resetAllSettings);
@@ -408,7 +425,7 @@ function getSettings() {
         enableExpDouble: isChecked('enable-exp-double'),
         enableStopExpDouble: isChecked('enable-stop-exp-double'),
         enableDeployGeneral: isChecked('enable-deploy-general'),
-        deployGeneralId: document.getElementById('deploy-general-id')?.value.trim() || '0',
+        deployGeneralId: document.getElementById('deploy-general-id')?.value.trim() || '',
         enableRetractGeneral: isChecked('enable-retract-general'),
         enableDisableBagCleaningAfk: isChecked('enable-disable-bag-cleaning-afk'),
         enableWuxijian: isChecked('enable-wuxijian'),
@@ -434,6 +451,22 @@ function generateScript(isAuto = false) {
     syncSelectAllToggles();
     const settings = getSettings();
     const moduleOrder = getModuleOrder();
+
+    // 防呆檢查：如果出戰武將有打勾但沒填寫編號
+    if (settings.enableDeployGeneral && !settings.deployGeneralId) {
+        const inputEl = document.getElementById('deploy-general-id');
+        if (inputEl) {
+            inputEl.style.border = '2px solid #ef4444';
+            inputEl.style.boxShadow = '0 0 0 2px rgba(239, 68, 68, 0.2)';
+            if (isManual) {
+                inputEl.focus();
+            }
+        }
+        if (isManual) {
+            showToast('請填寫出戰武將編號！', 'warning');
+            return '';
+        }
+    }
 
     // 驗證：如果模組標題有勾選，但內容沒有選取任何等級/副本，則進行提醒，並自動取消勾選
     for (const mod of moduleOrder) {
@@ -1315,7 +1348,12 @@ function resetAllSettings() {
     document.getElementById('enable-exp-double').checked = false;
     document.getElementById('enable-stop-exp-double').checked = false;
     document.getElementById('enable-deploy-general').checked = false;
-    document.getElementById('deploy-general-id').value = '';
+    const deployGeneralInput = document.getElementById('deploy-general-id');
+    if (deployGeneralInput) {
+        deployGeneralInput.value = '';
+        deployGeneralInput.style.border = '';
+        deployGeneralInput.style.boxShadow = '';
+    }
     document.getElementById('enable-retract-general').checked = false;
     
     const bagCleanAfkEl = document.getElementById('enable-disable-bag-cleaning-afk');
