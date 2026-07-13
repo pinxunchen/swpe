@@ -552,7 +552,7 @@ function generateSoloScript(settings, moduleOrder) {
 
 
     if (settings.enableStopExpDouble) {
-        lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 0)');
+        lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 1, 0)');
         lines.push('');
     }
 
@@ -616,7 +616,7 @@ function generateSoloScript(settings, moduleOrder) {
         lines.push('');
     }
     if (settings.enableExpDouble) {
-        lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)');
+        lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 1, 1)');
         lines.push('');
     }
     lines.push('離開並掛機()');
@@ -763,7 +763,7 @@ function generateTeamLeaderScript(settings, moduleOrder) {
     }
 
     if (settings.enableStopExpDouble) {
-        lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 0)');
+        lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 1, 0)');
         lines.push('');
     }
 
@@ -832,7 +832,7 @@ function generateTeamLeaderScript(settings, moduleOrder) {
         lines.push('');
     }
     if (settings.enableExpDouble) {
-        lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)');
+        lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 1, 1)');
         lines.push('');
     }
     lines.push('離開並掛機()');
@@ -1100,7 +1100,7 @@ function generateTeamMemberScript(settings, moduleOrder) {
     }
 
     if (settings.enableStopExpDouble) {
-        lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 0)');
+        lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 1, 0)');
         lines.push('');
     }
 
@@ -1166,7 +1166,7 @@ function generateTeamMemberScript(settings, moduleOrder) {
         lines.push('');
     }
     if (settings.enableExpDouble) {
-        lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)');
+        lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 1, 1)');
         lines.push('');
     }
     lines.push('離開並掛機()');
