@@ -413,6 +413,8 @@ function getSettings() {
         enableDisableBagCleaningAfk: isChecked('enable-disable-bag-cleaning-afk'),
         enableWuxijian: isChecked('enable-wuxijian'),
         wuxijianBag: getValue('wuxijian-bag', 4),
+        enableMeleeOnly: isChecked('enable-melee-only'),
+        meleeOnlyBag: getValue('melee-only-bag', 4),
     };
 }
 
@@ -541,6 +543,12 @@ function generateSoloScript(settings, moduleOrder) {
 
     if (settings.enableDeployGeneral) {
         lines.push(`出戰武將(${settings.deployGeneralId})`);
+        lines.push('');
+    }
+
+    if (settings.enableMeleeOnly) {
+        lines.push('解除玩家裝備("特殊")');
+        lines.push(`放入行囊(12040, 1, ${settings.meleeOnlyBag})`);
         lines.push('');
     }
 
@@ -751,6 +759,12 @@ function generateTeamLeaderScript(settings, moduleOrder) {
 
     if (settings.enableDeployGeneral) {
         lines.push(`出戰武將(${settings.deployGeneralId})`);
+        lines.push('');
+    }
+
+    if (settings.enableMeleeOnly) {
+        lines.push('解除玩家裝備("特殊")');
+        lines.push(`放入行囊(12040, 1, ${settings.meleeOnlyBag})`);
         lines.push('');
     }
 
@@ -1090,6 +1104,12 @@ function generateTeamMemberScript(settings, moduleOrder) {
         lines.push('');
     }
 
+    if (settings.enableMeleeOnly) {
+        lines.push('解除玩家裝備("特殊")');
+        lines.push(`放入行囊(12040, 1, ${settings.meleeOnlyBag})`);
+        lines.push('');
+    }
+
     if (settings.enableBagCleaning) {
         lines.push(`清理背包(${settings.bagToggle}, ${settings.bagCount}, ${settings.bagDelay}, ${settings.bagStart}, ${settings.bagEnd})`);
         lines.push('');
@@ -1311,6 +1331,15 @@ function resetAllSettings() {
     const wuxijianBagEl = document.getElementById('wuxijian-bag');
     if (wuxijianBagEl) {
         wuxijianBagEl.value = '4';
+    }
+
+    const meleeOnlyEl = document.getElementById('enable-melee-only');
+    if (meleeOnlyEl) {
+        meleeOnlyEl.checked = false;
+    }
+    const meleeOnlyBagEl = document.getElementById('melee-only-bag');
+    if (meleeOnlyBagEl) {
+        meleeOnlyBagEl.value = '4';
     }
     
     document.getElementById('enable-leader-id').checked = true;

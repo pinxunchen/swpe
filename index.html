@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=64">
+    <link rel="stylesheet" href="style.css?v=65">
 </head>
 
 <body>
@@ -92,7 +92,7 @@
                                 <input type="text" id="leader-id" class="setting-input"
                                     style="width: 120px; height: 34px; padding: 4px 8px; font-size: 15px;"
                                     placeholder="輸入編號" value="">
-                            </div>
+                                </div>
                             <div
                                 style="display: flex; align-items: center; justify-content: flex-start; gap: 8px; width: 100%;">
                                 <div class="setting-label"
@@ -288,14 +288,14 @@
                                     <span>🏹</span> 猛將專用 (掛機功能)
                                 </h3>
                                 <div class="setting-row"
-                                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; border-bottom: none; padding-bottom: 0; margin-bottom: 0;">
+                                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; border-bottom: none; padding-bottom: 0; margin-bottom: 0; align-items: start;">
                                     <div
-                                        style="position: relative; display: flex; align-items: center; justify-content: flex-start; gap: 8px; opacity: 0.5;">
+                                        style="position: relative; display: flex; align-items: center; justify-content: flex-start; gap: 8px;">
                                         <input type="checkbox" id="enable-disable-bag-cleaning-afk"
                                             style="display: none;">
                                         <div class="setting-label" style="margin-bottom: 0;">
                                             <label class="setting-toggle">
-                                                <input type="checkbox" id="enable-wuxijian" disabled>
+                                                <input type="checkbox" id="enable-wuxijian">
                                                 <span class="checkbox-custom"></span>
                                             </label>
                                             <span>掛機時用無息箭</span>
@@ -304,7 +304,7 @@
                                         </div>
                                         <span
                                             style="font-size: 13px; color: var(--text-muted); white-space: nowrap; margin-left: 4px;">從行囊</span>
-                                        <select id="wuxijian-bag" class="setting-input-sm" disabled
+                                        <select id="wuxijian-bag" class="setting-input-sm"
                                             style="width: 50px; height: 28px; padding: 2px;">
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -314,13 +314,35 @@
                                         </select>
                                         <span
                                             style="font-size: 13px; color: var(--text-muted); white-space: nowrap;">拿弓</span>
-
-                                        <!-- Overlay Mask to prevent interaction -->
-                                        <div
-                                            style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: transparent; cursor: not-allowed; z-index: 10;">
-                                        </div>
                                     </div>
-                                    <div></div>
+                                    <div
+                                        style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 4px;">
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <div class="setting-label" style="margin-bottom: 0;">
+                                                <label class="setting-toggle">
+                                                    <input type="checkbox" id="enable-melee-only">
+                                                    <span class="checkbox-custom"></span>
+                                                </label>
+                                                <span>只用普攻打百人/軍需/官府/腳本</span>
+                                                <span class="help-icon"
+                                                    data-tooltip="會把弓拆下來放到指定行囊，注意背包不要再放其他弓">?</span>
+                                            </div>
+                                            <span
+                                                style="font-size: 13px; color: var(--text-muted); white-space: nowrap; margin-left: 4px;">弓放到第</span>
+                                            <select id="melee-only-bag" class="setting-input-sm"
+                                                style="width: 50px; height: 28px; padding: 2px;">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4" selected>4</option>
+                                                <option value="5">5</option>
+                                            </select>
+                                            <span
+                                                style="font-size: 13px; color: var(--text-muted); white-space: nowrap;">個行囊</span>
+                                        </div>
+                                        <span
+                                            style="color: var(--gold-light); font-size: 13px; font-weight: 500; margin-left: 28px; line-height: 1; white-space: nowrap;">⚠️只支援商城弓使用</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -557,7 +579,7 @@
                 <p>跑百人/軍需/官府/副本時先<span class="highlight">「不要裝弓」</span><br>並且<span
                         class="highlight">「包包不要放弓」</span>，靠普攻打來節省動畫時間。</p>
                 <ul style="margin-top: 12px; padding-left: 20px; color: var(--text-muted);">
-                    <li style="margin-bottom: 8px;">魯班盒的使用技能無息箭要打勾</li>
+                     <li style="margin-bottom: 8px;">魯班盒的使用技能無息箭要打勾</li>
                     <li style="margin-bottom: 8px;">魯班盒的自動換特殊要打勾</li>
                     <li style="margin-bottom: 0;">放弓的行囊建議不要放其他東西，不然也會被拿出來</li>
                 </ul>
@@ -597,7 +619,7 @@
         <p>SWPE 腳本產生器 — 純前端工具，所有資料僅在您的瀏覽器中處理</p>
     </footer>
 
-    <script src="script.js?v=64"></script>
+    <script src="script.js?v=65"></script>
 </body>
 
 </html>
