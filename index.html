@@ -43,7 +43,7 @@
                             <div class="mode-card">
                                 <div class="mode-icon">🧑</div>
                                 <div class="mode-title">單人模式</div>
-                                <div class="mode-desc">一人執行軍需/百人/官府/副本任務</div>
+                                <div class="mode-desc">一人執行軍需/百人/副本任務</div>
                             </div>
                         </label>
                         <label class="mode-option" id="mode-team-label">
@@ -173,12 +173,12 @@
                                             <span class="checkbox-custom"></span>
                                         </label>
                                         <span>腳本啟動後出戰武將</span>
-                                        <span class="help-icon"
-                                            data-tooltip="如果不知道武將編號，請在swpe標題列的「工具」選「開啟監視器」，再到遊戲內讓該武將出戰即可在監視器看到武將編號&#10;-掛機時單掛者適用">?</span>
                                     </div>
                                     <input type="text" id="deploy-general-id" class="setting-input-sm"
                                         style="width: 80px; text-align: center; height: 28px; padding: 2px;"
                                         placeholder="武將編號">
+                                    <span class="help-icon"
+                                        data-tooltip="如果不知道武將編號，請在swpe標題列的「工具」選「開啟監視器」，再到遊戲內讓該武將出戰即可在監視器看到武將編號&#10;-掛機時單掛者適用">如何查編號?</span>
                                 </div>
                                 <span
                                     style="color: var(--gold-light); font-size: 13px; font-weight: 500; margin-left: 28px; line-height: 1; white-space: nowrap;">⚠️
@@ -297,36 +297,6 @@
                                 <div class="setting-row"
                                     style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; border-bottom: 1px solid rgba(42, 53, 80, 0.4); padding-bottom: 12px; margin-bottom: 12px; align-items: start;">
                                     <div
-                                        style="position: relative; display: flex; align-items: center; justify-content: flex-start; gap: 8px;">
-                                        <input type="checkbox" id="enable-disable-bag-cleaning-afk"
-                                            style="display: none;">
-                                        <div class="setting-label" style="margin-bottom: 0;">
-                                            <label class="setting-toggle">
-                                                <input type="checkbox" id="enable-wuxijian">
-                                                <span class="checkbox-custom"></span>
-                                            </label>
-                                            <span>掛機時用無息箭</span>
-                                            <span class="help-icon"
-                                                data-tooltip="跑百人/軍需/官府/副本時先&quot;不要裝弓&quot;，並且&quot;包包不要放弓&quot;，靠普攻打來節省動畫時間&#10;-魯班盒的使用技能無息箭要打勾&#10;-魯班盒的自動換特殊要打勾&#10;-放弓的行囊建議不要放其他東西，不然也會被拿出來">?</span>
-                                        </div>
-                                        <span
-                                            style="font-size: 13px; color: var(--text-muted); white-space: nowrap; margin-left: 4px;">掛機時從第</span>
-                                        <select id="wuxijian-bag" class="setting-input-sm"
-                                            style="width: 50px; height: 28px; padding: 2px;">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4" selected>4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                        <span
-                                            style="font-size: 13px; color: var(--text-muted); white-space: nowrap;">個行囊拿弓</span>
-                                    </div>
-                                    <div></div>
-                                </div>
-                                <div class="setting-row"
-                                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; border-bottom: none; padding-bottom: 0; margin-bottom: 0; align-items: start;">
-                                    <div
                                         style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 4px;">
                                         <div style="display: flex; align-items: center; gap: 8px;">
                                             <div class="setting-label" style="margin-bottom: 0;">
@@ -339,7 +309,7 @@
                                                     data-tooltip="會把弓拆下來放到指定行囊，注意背包不要再放其他弓，否則又會被裝備上去">?</span>
                                             </div>
                                             <span
-                                                style="font-size: 13px; color: var(--text-muted); white-space: nowrap; margin-left: 4px;">弓放到第</span>
+                                                style="font-size: 13px; color: var(--text-muted); white-space: nowrap; margin-left: 4px;">弓收到第</span>
                                             <select id="melee-only-bag" class="setting-input-sm"
                                                 style="width: 50px; height: 28px; padding: 2px;">
                                                 <option value="1">1</option>
@@ -353,6 +323,36 @@
                                         </div>
                                         <span
                                             style="color: var(--gold-light); font-size: 13px; font-weight: 500; margin-left: 28px; line-height: 1; white-space: nowrap;">⚠️只支援商城弓使用，注意背包不要再放其他弓，否則又會被裝備上去</span>
+                                    </div>
+                                    <div></div>
+                                </div>
+                                <div class="setting-row"
+                                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; border-bottom: none; padding-bottom: 0; margin-bottom: 0; align-items: start;">
+                                    <div
+                                        style="position: relative; display: flex; align-items: center; justify-content: flex-start; gap: 8px;">
+                                        <input type="checkbox" id="enable-disable-bag-cleaning-afk"
+                                            style="display: none;">
+                                        <div class="setting-label" style="margin-bottom: 0;">
+                                            <label class="setting-toggle">
+                                                <input type="checkbox" id="enable-wuxijian">
+                                                <span class="checkbox-custom"></span>
+                                            </label>
+                                            <span>掛機時用無息箭</span>
+                                            <span class="help-icon"
+                                                data-tooltip="跑百人/軍需/官府/副本時先&quot;不要裝弓&quot;，並且&quot;包包不要放弓&quot;，靠普攻打來節省動畫時間&#10;-魯班盒的使用技能無息箭要打勾&#10;-魯班盒的自動換特殊要打勾&#10;-放弓的行囊建議不要放其他東西，不然也會被拿出來">?</span>
+                                        </div>
+                                        <span
+                                            style="font-size: 13px; color: var(--text-muted); white-space: nowrap; margin-left: 4px;">回去掛機時從第</span>
+                                        <select id="wuxijian-bag" class="setting-input-sm"
+                                            style="width: 50px; height: 28px; padding: 2px;">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4" selected>4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                        <span
+                                            style="font-size: 13px; color: var(--text-muted); white-space: nowrap;">個行囊拿弓</span>
                                     </div>
                                     <div></div>
                                 </div>
