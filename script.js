@@ -563,7 +563,7 @@ function generateSoloScript(settings, moduleOrder) {
 
     if (settings.enableMeleeOnly) {
         lines.push('解除玩家裝備("特殊")');
-        lines.push(`放入行囊(12040, 1, ${settings.meleeOnlyBag})`);
+        lines.push(`快速物品處理.行囊放入(12040, ${settings.meleeOnlyBag})`);
         lines.push('');
     }
 
@@ -774,7 +774,7 @@ function generateTeamLeaderScript(settings, moduleOrder) {
 
     if (settings.enableMeleeOnly) {
         lines.push('解除玩家裝備("特殊")');
-        lines.push(`放入行囊(12040, 1, ${settings.meleeOnlyBag})`);
+        lines.push(`快速物品處理.行囊放入(12040, ${settings.meleeOnlyBag})`);
         lines.push('');
     }
 
@@ -1111,7 +1111,7 @@ function generateTeamMemberScript(settings, moduleOrder) {
 
     if (settings.enableMeleeOnly) {
         lines.push('解除玩家裝備("特殊")');
-        lines.push(`放入行囊(12040, 1, ${settings.meleeOnlyBag})`);
+        lines.push(`快速物品處理.行囊放入(12040, ${settings.meleeOnlyBag})`);
         lines.push('');
     }
 
