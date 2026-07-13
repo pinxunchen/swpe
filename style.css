@@ -152,7 +152,7 @@ body {
 
 .top-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 3fr 7fr;
     gap: 16px;
     align-items: stretch;
 }
