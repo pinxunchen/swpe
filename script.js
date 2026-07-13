@@ -564,6 +564,7 @@ function generateSoloScript(settings, moduleOrder) {
     if (settings.enableMeleeOnly) {
         lines.push('解除玩家裝備("特殊")');
         lines.push(`快速物品處理.行囊放入(12040, ${settings.meleeOnlyBag})`);
+        lines.push('延遲毫秒(2000)');
         lines.push('');
     }
 
@@ -775,6 +776,7 @@ function generateTeamLeaderScript(settings, moduleOrder) {
     if (settings.enableMeleeOnly) {
         lines.push('解除玩家裝備("特殊")');
         lines.push(`快速物品處理.行囊放入(12040, ${settings.meleeOnlyBag})`);
+        lines.push('延遲毫秒(2000)');
         lines.push('');
     }
 
@@ -1114,6 +1116,7 @@ function generateTeamMemberScript(settings, moduleOrder) {
     if (settings.enableMeleeOnly) {
         lines.push('解除玩家裝備("特殊")');
         lines.push(`快速物品處理.行囊放入(12040, ${settings.meleeOnlyBag})`);
+        lines.push('延遲毫秒(2000)');
         lines.push('');
     }
 
@@ -1298,24 +1301,24 @@ function resetAllSettings() {
     document.getElementById('mode-team').checked = false;
     document.getElementById('role-leader').checked = true;
     document.getElementById('role-member').checked = false;
-    
+
     // Trigger onModeChange to update UI visibility of team settings
     onModeChange();
-    
+
     // 2. Reset Step 2: Settings parameters
     document.getElementById('enable-wait-time').checked = true;
     document.getElementById('wait-time-hour').value = '00';
     document.getElementById('wait-time-minute').value = '01';
-    
+
     document.getElementById('enable-bag-cleaning').checked = true;
     document.getElementById('bag-count').value = '1';
     document.getElementById('bag-delay').value = '2000';
     document.getElementById('bag-start').value = '1';
     document.getElementById('bag-end').value = '15';
-    
+
     document.getElementById('enable-teleport').checked = true;
     document.getElementById('teleport-id').value = '2';
-    
+
     document.getElementById('enable-exp-double').checked = false;
     document.getElementById('enable-stop-exp-double').checked = false;
     document.getElementById('enable-deploy-general').checked = false;
@@ -1326,13 +1329,13 @@ function resetAllSettings() {
         deployGeneralInput.style.boxShadow = '';
     }
     document.getElementById('enable-retract-general').checked = false;
-    
+
     const bagCleanAfkEl = document.getElementById('enable-disable-bag-cleaning-afk');
     if (bagCleanAfkEl) {
         bagCleanAfkEl.checked = false;
         bagCleanAfkEl.disabled = false;
     }
-    
+
     const wuxijianEl = document.getElementById('enable-wuxijian');
     if (wuxijianEl) {
         wuxijianEl.checked = false;
@@ -1350,48 +1353,48 @@ function resetAllSettings() {
     if (meleeOnlyBagEl) {
         meleeOnlyBagEl.value = '4';
     }
-    
+
     document.getElementById('enable-leader-id').checked = true;
     document.getElementById('leader-id').value = '';
-    
+
     document.getElementById('enable-team-size').checked = true;
     document.getElementById('team-size').value = '5';
-    
+
     document.getElementById('enable-bag-number').checked = true;
     document.getElementById('bag-number').value = '1';
-    
+
     // 3. Reset Step 3: Modules list
     // Checkboxes in header
     document.getElementById('module-junxu').checked = false;
     document.getElementById('module-bairen').checked = false;
     document.getElementById('module-guanfu').checked = false;
     document.getElementById('module-dungeon').checked = false;
-    
+
     // Collapse values
     document.getElementById('junxu-content').classList.remove('collapsed');
     document.getElementById('bairen-content').classList.remove('collapsed');
     document.getElementById('guanfu-content').classList.remove('collapsed');
     document.getElementById('dungeon-content').classList.remove('collapsed');
-    
+
     // All levels and dungeons checkboxes
     document.querySelectorAll('#junxu-levels input[type="checkbox"]').forEach(cb => cb.checked = false);
     document.querySelectorAll('#bairen-levels input[type="checkbox"]').forEach(cb => cb.checked = false);
     document.querySelectorAll('#guanfu-levels input[type="checkbox"]').forEach(cb => cb.checked = false);
     document.querySelectorAll('#dungeon-list input[type="checkbox"]').forEach(cb => cb.checked = false);
-    
+
     // Reset secondary values
     document.getElementById('guanfu-times').value = '3';
     document.getElementById('dungeon-times').value = '5';
-    
+
     // Rebattle select value
     const rebattleSel = document.getElementById('dungeon-rebattle');
     if (rebattleSel) {
         rebattleSel.value = '';
     }
-    
+
     // All select-all checkboxes
     document.querySelectorAll('.toggle-select-all').forEach(cb => cb.checked = false);
-    
+
     // Restore default module order in list
     const list = document.getElementById('modules-list');
     if (list) {
@@ -1413,10 +1416,10 @@ function resetAllSettings() {
     if (previewEl) {
         previewEl.value = '';
     }
-    
+
     // Finally, regenerate the script preview!
     autoGenerate();
-    
+
     showToast('已還原為初始預設值！', 'success');
 }
 
