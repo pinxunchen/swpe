@@ -607,6 +607,10 @@ function generateSoloScript(settings, moduleOrder) {
         lines.push('出戰武將(0)');
         lines.push('');
     }
+    if (settings.enableWuxijian) {
+        lines.push(`快速物品處理.行囊取出(12040, ${settings.wuxijianBag})`);
+        lines.push('');
+    }
     if (settings.enableTeleport) {
         lines.push(`使用傳送符(${settings.teleportId})`);
         lines.push('');
@@ -615,16 +619,7 @@ function generateSoloScript(settings, moduleOrder) {
         lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)');
         lines.push('');
     }
-    if (settings.enableWuxijian) {
-        const args = [0, 0, 0, 0, 0];
-        const bagIdx = parseInt(settings.wuxijianBag, 10) - 1;
-        if (bagIdx >= 0 && bagIdx < 5) {
-            args[bagIdx] = 1;
-        }
-        lines.push(`離開並掛機(${args.join(', ')})`);
-    } else {
-        lines.push('離開並掛機()');
-    }
+    lines.push('離開並掛機()');
 
     return lines;
 }
@@ -828,6 +823,10 @@ function generateTeamLeaderScript(settings, moduleOrder) {
         lines.push('出戰武將(0)');
         lines.push('');
     }
+    if (settings.enableWuxijian) {
+        lines.push(`快速物品處理.行囊取出(12040, ${settings.wuxijianBag})`);
+        lines.push('');
+    }
     if (settings.enableTeleport) {
         lines.push(`使用傳送符(${settings.teleportId})`);
         lines.push('');
@@ -836,16 +835,7 @@ function generateTeamLeaderScript(settings, moduleOrder) {
         lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)');
         lines.push('');
     }
-    if (settings.enableWuxijian) {
-        const args = [0, 0, 0, 0, 0];
-        const bagIdx = parseInt(settings.wuxijianBag, 10) - 1;
-        if (bagIdx >= 0 && bagIdx < 5) {
-            args[bagIdx] = 1;
-        }
-        lines.push(`離開並掛機(${args.join(', ')})`);
-    } else {
-        lines.push('離開並掛機()');
-    }
+    lines.push('離開並掛機()');
 
     return lines;
 }
@@ -1167,6 +1157,10 @@ function generateTeamMemberScript(settings, moduleOrder) {
         lines.push('出戰武將(0)');
         lines.push('');
     }
+    if (settings.enableWuxijian) {
+        lines.push(`快速物品處理.行囊取出(12040, ${settings.wuxijianBag})`);
+        lines.push('');
+    }
     if (settings.enableTeleport) {
         lines.push(`使用傳送符(${settings.teleportId})`);
         lines.push('');
@@ -1175,16 +1169,7 @@ function generateTeamMemberScript(settings, moduleOrder) {
         lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 0, 1)');
         lines.push('');
     }
-    if (settings.enableWuxijian) {
-        const args = [0, 0, 0, 0, 0];
-        const bagIdx = parseInt(settings.wuxijianBag, 10) - 1;
-        if (bagIdx >= 0 && bagIdx < 5) {
-            args[bagIdx] = 1;
-        }
-        lines.push(`離開並掛機(${args.join(', ')})`);
-    } else {
-        lines.push('離開並掛機()');
-    }
+    lines.push('離開並掛機()');
 
     return lines;
 }
