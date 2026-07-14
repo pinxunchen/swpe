@@ -1634,8 +1634,35 @@ function saveCurrentProfile() {
         showToast('請輸入快取名稱（檔案名稱）', 'warning');
         return;
     }
-    
-    const settings = getCurrentSettings();
+    const settings = {
+        mode: document.querySelector('input[name="mode"]:checked')?.value,
+        teamRole: document.querySelector('input[name="team-role"]:checked')?.value,
+        leaderId: getValue('leader-id'),
+        teamSize: getValue('team-size'),
+        bagNumber: getValue('bag-number'),
+        bagToggle: getValue('bag-toggle'),
+        bagCount: getValue('bag-count'),
+        bagDelay: getValue('bag-delay'),
+        bagStart: getValue('bag-start'),
+        bagEnd: getValue('bag-end'),
+        teleportId: getValue('teleport-id'),
+        deployGeneralId: getValue('deploy-general-id'),
+        wuxijianBag: getValue('wuxijian-bag'),
+        meleeOnlyBag: getValue('melee-only-bag'),
+        
+        enableLeaderId: isChecked('enable-leader-id'),
+        enableTeamSize: isChecked('enable-team-size'),
+        enableBagNumber: isChecked('enable-bag-number'),
+        enableBagCleaning: isChecked('enable-bag-cleaning'),
+        enableExpDouble: isChecked('enable-exp-double'),
+        enableStopExpDouble: isChecked('enable-stop-exp-double'),
+        enableTeleport: isChecked('enable-teleport'),
+        enableDeployGeneral: isChecked('enable-deploy-general'),
+        enableRetractGeneral: isChecked('enable-retract-general'),
+        enableDisableBagCleaningAfk: isChecked('enable-disable-bag-cleaning-afk'),
+        enableWuxijian: isChecked('enable-wuxijian'),
+        enableMeleeOnly: isChecked('enable-melee-only')
+    };
     const modules = {
         junxu: {
             enabled: isChecked('module-junxu'),
