@@ -1616,7 +1616,7 @@ function updateProfileSelect() {
     const profiles = getProfiles();
     const currentVal = select.value;
     
-    let html = '<option value="">-- 請選擇快取 --</option>';
+    let html = '';
     for (const name of Object.keys(profiles)) {
         html += `<option value="${name}">${name}</option>`;
     }
@@ -1832,9 +1832,6 @@ function loadSelectedProfile() {
             }
         }
     }
-    
-    syncSelectAllToggles();
-    
     // Restore module order
     if (savedOrder && savedOrder.length > 0) {
         const list = document.getElementById('modules-list');
