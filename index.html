@@ -39,7 +39,7 @@
                     </div>
                     <button class="btn btn-primary" id="btn-open-profile-modal"
                         style="padding: 6px 12px; font-size: 13px;">
-                        <span class="btn-icon">💾</span> 讀取設定檔
+                        <span class="btn-icon">💾</span> 讀取快取設定
                     </button>
                 </div>
                 <div class="card-body">
@@ -572,10 +572,10 @@
                         <span class="btn-icon">📋</span> 複製腳本
                     </button>
                     <button class="btn btn-accent" id="btn-save-profile">
-                        <span class="btn-icon">💾</span> 儲存目前設定檔
+                        <span class="btn-icon">💾</span> 快取目前設定
                     </button>
                     <button class="btn btn-accent" id="btn-download">
-                        <span class="btn-icon">📥</span> 下載 .swpe
+                        <span class="btn-icon">📥</span> 下載腳本 (.swpe)
                     </button>
                     <span
                         style="color: var(--gold-light); font-size: 13px; font-weight: 500; align-self: center; margin-left: 8px;">⚠️
@@ -637,11 +637,11 @@
     <div id="profile-modal" class="modal-overlay">
         <div class="modal-content" style="max-width: 400px;">
             <div class="modal-header">
-                <span class="modal-title">💾 讀取/刪除快取設定檔</span>
+                <span class="modal-title">💾 讀取/刪除快取設定</span>
                 <button class="modal-close-btn" id="profile-modal-close-btn">&times;</button>
             </div>
             <div class="modal-body">
-                <p style="color: var(--text-muted); margin-bottom: 12px; font-size: 14px;">請選擇您要載入或刪除的設定檔：</p>
+                <p style="color: var(--text-muted); margin-bottom: 12px; font-size: 14px;">請選擇您要載入或刪除的快取：</p>
                 <select id="profile-select" class="setting-input" size="5"
                     style="width: 100%; height: auto; min-height: 120px; padding: 8px;">
                     <!-- Will be populated by JS -->
@@ -650,7 +650,7 @@
                     <button class="btn btn-danger" id="btn-delete-profile"
                         style="padding: 8px 16px; font-size: 14px;">刪除選取</button>
                     <button class="btn btn-primary" id="btn-load-profile"
-                        style="padding: 8px 16px; font-size: 14px;">讀取設定</button>
+                        style="padding: 8px 16px; font-size: 14px;">讀取快取</button>
                 </div>
             </div>
         </div>

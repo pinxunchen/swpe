@@ -1616,7 +1616,7 @@ function updateProfileSelect() {
     const profiles = getProfiles();
     const currentVal = select.value;
     
-    let html = '<option value="">-- 請選擇設定檔 --</option>';
+    let html = '<option value="">-- 請選擇快取 --</option>';
     for (const name of Object.keys(profiles)) {
         html += `<option value="${name}">${name}</option>`;
     }
@@ -1631,7 +1631,7 @@ function saveCurrentProfile() {
     const nameInput = document.getElementById('filename-input');
     const profileName = nameInput.value.trim();
     if (!profileName) {
-        showToast('請輸入設定檔名稱（檔案名稱）', 'warning');
+        showToast('請輸入快取名稱（檔案名稱）', 'warning');
         return;
     }
     
@@ -1671,14 +1671,14 @@ function saveCurrentProfile() {
     
     updateProfileSelect();
     document.getElementById('profile-select').value = profileName;
-    showToast(`已儲存設定檔: ${profileName}`, 'success');
+    showToast(`已快取設定: ${profileName}`, 'success');
 }
 
 function loadSelectedProfile() {
     const select = document.getElementById('profile-select');
     const profileName = select.value;
     if (!profileName) {
-        showToast('請先選擇要讀取的設定檔', 'warning');
+        showToast('請先選擇要讀取的快取', 'warning');
         return;
     }
     
@@ -1820,25 +1820,25 @@ function loadSelectedProfile() {
     const modal = document.getElementById('profile-modal');
     if (modal) modal.classList.remove('show');
     
-    showToast(`已讀取設定檔: ${profileName}`, 'success');
+    showToast(`已讀取快取: ${profileName}`, 'success');
 }
 
 function deleteSelectedProfile() {
     const select = document.getElementById('profile-select');
     const profileName = select.value;
     if (!profileName) {
-        showToast('請先選擇要刪除的設定檔', 'warning');
+        showToast('請先選擇要刪除的快取', 'warning');
         return;
     }
     
-    if (!confirm(`確定要刪除設定檔 "${profileName}" 嗎？`)) return;
+    if (!confirm(`確定要刪除快取 "${profileName}" 嗎？`)) return;
     
     const profiles = getProfiles();
     delete profiles[profileName];
     saveProfiles(profiles);
     
     updateProfileSelect();
-    showToast(`已刪除設定檔: ${profileName}`, 'success');
+    showToast(`已刪除快取: ${profileName}`, 'success');
 }
 
 function initProfileManager() {
