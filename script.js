@@ -1698,7 +1698,7 @@ function saveCurrentProfile() {
     const profileData = {
         settings,
         modules,
-        moduleOrder: [...moduleOrder],
+        moduleOrder: getModuleOrder(),
         filename: getValue('filename-input', '我的腳本')
     };
     
@@ -1837,8 +1837,15 @@ function loadSelectedProfile() {
     
     // Restore module order
     if (savedOrder && savedOrder.length > 0) {
-        moduleOrder = savedOrder;
-        renderModulesList();
+        const list = document.getElementById('modules-list');
+        if (list) {
+            savedOrder.forEach(mod => {
+                const item = list.querySelector(`.module-item[data-module="${mod.id}"]`);
+                if (item) {
+                    list.appendChild(item);
+                }
+            });
+        }
     }
     
     if (filename !== undefined) {
