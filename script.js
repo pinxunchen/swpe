@@ -1628,10 +1628,10 @@ function updateProfileSelect() {
 }
 
 function saveCurrentProfile() {
-    const nameInput = document.getElementById('profile-name-input');
+    const nameInput = document.getElementById('filename-input');
     const profileName = nameInput.value.trim();
     if (!profileName) {
-        showToast('請輸入設定檔名稱', 'warning');
+        showToast('請輸入設定檔名稱（檔案名稱）', 'warning');
         return;
     }
     
@@ -1807,7 +1807,6 @@ function loadSelectedProfile() {
     if (filename !== undefined) {
         const el = document.getElementById('filename-input');
         if (el) el.value = filename;
-        document.getElementById('profile-name-input').value = profileName;
     }
     
     updateDungeonRebattleOptions(); 
@@ -1835,7 +1834,6 @@ function deleteSelectedProfile() {
     saveProfiles(profiles);
     
     updateProfileSelect();
-    document.getElementById('profile-name-input').value = '';
     showToast(`已刪除設定檔: ${profileName}`, 'success');
 }
 
@@ -1846,16 +1844,16 @@ function initProfileManager() {
     const btnLoad = document.getElementById('btn-load-profile');
     const btnDelete = document.getElementById('btn-delete-profile');
     const profileSelect = document.getElementById('profile-select');
-    const profileInput = document.getElementById('profile-name-input');
+    const filenameInput = document.getElementById('filename-input');
     
     if (btnSave) btnSave.addEventListener('click', saveCurrentProfile);
     if (btnLoad) btnLoad.addEventListener('click', loadSelectedProfile);
     if (btnDelete) btnDelete.addEventListener('click', deleteSelectedProfile);
     
-    if (profileSelect && profileInput) {
+    if (profileSelect && filenameInput) {
         profileSelect.addEventListener('change', () => {
             if (profileSelect.value) {
-                profileInput.value = profileSelect.value;
+                filenameInput.value = profileSelect.value;
             }
         });
     }
