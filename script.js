@@ -1864,7 +1864,36 @@ function loadSelectedProfile() {
     showToast(`已讀取快取: ${profileName}`, 'success');
 }
 
-function deleteSelectedProfile() {
+function showConfirm(message) {
+    return new Promise((resolve) => {
+        const modal = document.getElementById('confirm-modal');
+        const msgEl = document.getElementById('confirm-modal-msg');
+        const btnOk = document.getElementById('confirm-modal-ok');
+        const btnCancel = document.getElementById('confirm-modal-cancel');
+        
+        if (!modal || !msgEl || !btnOk || !btnCancel) {
+            resolve(confirm(message));
+            return;
+        }
+        
+        msgEl.textContent = message;
+        modal.classList.add('show');
+        
+        const cleanup = () => {
+            btnOk.removeEventListener('click', onOk);
+            btnCancel.removeEventListener('click', onCancel);
+            modal.classList.remove('show');
+        };
+        
+        const onOk = () => { cleanup(); resolve(true); };
+        const onCancel = () => { cleanup(); resolve(false); };
+        
+        btnOk.addEventListener('click', onOk);
+        btnCancel.addEventListener('click', onCancel);
+    });
+}
+
+async function deleteSelectedProfile() {
     const select = document.getElementById('profile-select');
     const profileName = select.value;
     if (!profileName) {
@@ -1872,7 +1901,8 @@ function deleteSelectedProfile() {
         return;
     }
     
-    if (!confirm(`確定要刪除快取 "${profileName}" 嗎？`)) return;
+    const isConfirmed = await showConfirm(`確定要刪除快取 "${profileName}" 嗎？`);
+    if (!isConfirmed) return;
     
     const profiles = getProfiles();
     delete profiles[profileName];

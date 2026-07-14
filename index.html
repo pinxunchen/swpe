@@ -656,6 +656,22 @@
         </div>
     </div>
 
+    <!-- Confirm Modal -->
+    <div id="confirm-modal" class="modal-overlay" style="z-index: 10000;">
+        <div class="modal-content" style="max-width: 350px;">
+            <div class="modal-header" style="border-bottom: none; padding-bottom: 0;">
+                <span class="modal-title" style="color: var(--text-primary);">⚠️ 確認刪除</span>
+            </div>
+            <div class="modal-body" style="padding-top: 12px;">
+                <p id="confirm-modal-msg" style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">確定要刪除嗎？</p>
+                <div style="display: flex; gap: 12px; justify-content: flex-end;">
+                    <button class="btn" id="confirm-modal-cancel" style="padding: 6px 16px; font-size: 14px; background: transparent; border: 1px solid var(--border-color); color: var(--text-muted);">取消</button>
+                    <button class="btn btn-danger" id="confirm-modal-ok" style="padding: 6px 16px; font-size: 14px;">確定刪除</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="toast-container"></div>
     <!-- Toast notification -->
     <div class="toast" id="toast">
