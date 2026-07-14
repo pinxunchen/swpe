@@ -1818,7 +1818,7 @@ function loadSelectedProfile() {
     autoGenerate();
     
     const modal = document.getElementById('profile-modal');
-    if (modal) modal.style.display = 'none';
+    if (modal) modal.classList.remove('show');
     
     showToast(`已讀取設定檔: ${profileName}`, 'success');
 }
@@ -1858,20 +1858,20 @@ function initProfileManager() {
     if (btnOpenModal && profileModal) {
         btnOpenModal.addEventListener('click', () => {
             updateProfileSelect();
-            profileModal.style.display = 'flex';
+            profileModal.classList.add('show');
         });
     }
     
     if (modalCloseBtn && profileModal) {
         modalCloseBtn.addEventListener('click', () => {
-            profileModal.style.display = 'none';
+            profileModal.classList.remove('show');
         });
     }
     
     if (profileModal) {
         profileModal.addEventListener('click', (e) => {
             if (e.target === profileModal) {
-                profileModal.style.display = 'none';
+                profileModal.classList.remove('show');
             }
         });
     }

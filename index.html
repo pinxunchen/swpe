@@ -32,17 +32,18 @@
         <div class="top-row">
             <!-- Step 1: Mode Selection -->
             <section class="card step-card" id="step1">
-                <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
+                <div class="card-header" style="justify-content: space-between;">
+                    <div style="display: flex; align-items: center; gap: 14px;">
                         <span class="step-badge">步驟一</span>
                         <h2>選擇模式</h2>
                     </div>
-                    <button class="btn btn-primary" id="btn-open-profile-modal" style="padding: 6px 12px; font-size: 13px;">
+                    <button class="btn btn-primary" id="btn-open-profile-modal"
+                        style="padding: 6px 12px; font-size: 13px;">
                         <span class="btn-icon">💾</span> 讀取設定檔
                     </button>
                 </div>
                 <div class="card-body">
-                <div class="mode-selector">
+                    <div class="mode-selector">
                         <label class="mode-option" id="mode-solo-label">
                             <input type="radio" name="mode" value="solo" id="mode-solo" checked>
                             <div class="mode-card">
@@ -571,7 +572,7 @@
                         <span class="btn-icon">📋</span> 複製腳本
                     </button>
                     <button class="btn btn-accent" id="btn-save-profile">
-                        <span class="btn-icon">💾</span> 儲存目前設定
+                        <span class="btn-icon">💾</span> 儲存目前設定檔
                     </button>
                     <button class="btn btn-accent" id="btn-download">
                         <span class="btn-icon">📥</span> 下載 .swpe
@@ -641,12 +642,15 @@
             </div>
             <div class="modal-body">
                 <p style="color: var(--text-muted); margin-bottom: 12px; font-size: 14px;">請選擇您要載入或刪除的設定檔：</p>
-                <select id="profile-select" class="setting-input" size="5" style="width: 100%; height: auto; min-height: 120px; padding: 8px;">
+                <select id="profile-select" class="setting-input" size="5"
+                    style="width: 100%; height: auto; min-height: 120px; padding: 8px;">
                     <!-- Will be populated by JS -->
                 </select>
                 <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 16px;">
-                    <button class="btn btn-danger" id="btn-delete-profile" style="padding: 8px 16px; font-size: 14px;">刪除選取</button>
-                    <button class="btn btn-primary" id="btn-load-profile" style="padding: 8px 16px; font-size: 14px;">讀取設定</button>
+                    <button class="btn btn-danger" id="btn-delete-profile"
+                        style="padding: 8px 16px; font-size: 14px;">刪除選取</button>
+                    <button class="btn btn-primary" id="btn-load-profile"
+                        style="padding: 8px 16px; font-size: 14px;">讀取設定</button>
                 </div>
             </div>
         </div>
