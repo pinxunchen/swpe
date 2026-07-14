@@ -1634,6 +1634,16 @@ function saveCurrentProfile() {
         showToast('請輸入快取名稱（檔案名稱）', 'warning');
         return;
     }
+    const getValue = (id, fallback = '') => {
+        const el = document.getElementById(id);
+        return el ? el.value : fallback;
+    };
+    
+    const isChecked = (id) => {
+        const el = document.getElementById(id);
+        return el ? el.checked : false;
+    };
+
     const settings = {
         mode: document.querySelector('input[name="mode"]:checked')?.value,
         teamRole: document.querySelector('input[name="team-role"]:checked')?.value,
