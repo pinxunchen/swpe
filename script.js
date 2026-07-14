@@ -1816,6 +1816,10 @@ function loadSelectedProfile() {
     }
     
     autoGenerate();
+    
+    const modal = document.getElementById('profile-modal');
+    if (modal) modal.style.display = 'none';
+    
     showToast(`已讀取設定檔: ${profileName}`, 'success');
 }
 
@@ -1843,17 +1847,31 @@ function initProfileManager() {
     const btnSave = document.getElementById('btn-save-profile');
     const btnLoad = document.getElementById('btn-load-profile');
     const btnDelete = document.getElementById('btn-delete-profile');
-    const profileSelect = document.getElementById('profile-select');
-    const filenameInput = document.getElementById('filename-input');
+    const btnOpenModal = document.getElementById('btn-open-profile-modal');
+    const modalCloseBtn = document.getElementById('profile-modal-close-btn');
+    const profileModal = document.getElementById('profile-modal');
     
     if (btnSave) btnSave.addEventListener('click', saveCurrentProfile);
     if (btnLoad) btnLoad.addEventListener('click', loadSelectedProfile);
     if (btnDelete) btnDelete.addEventListener('click', deleteSelectedProfile);
     
-    if (profileSelect && filenameInput) {
-        profileSelect.addEventListener('change', () => {
-            if (profileSelect.value) {
-                filenameInput.value = profileSelect.value;
+    if (btnOpenModal && profileModal) {
+        btnOpenModal.addEventListener('click', () => {
+            updateProfileSelect();
+            profileModal.style.display = 'flex';
+        });
+    }
+    
+    if (modalCloseBtn && profileModal) {
+        modalCloseBtn.addEventListener('click', () => {
+            profileModal.style.display = 'none';
+        });
+    }
+    
+    if (profileModal) {
+        profileModal.addEventListener('click', (e) => {
+            if (e.target === profileModal) {
+                profileModal.style.display = 'none';
             }
         });
     }
