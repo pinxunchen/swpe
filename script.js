@@ -1595,8 +1595,275 @@ function updateRebattleDropdown() {
     dropdown.innerHTML = html;
 }
 
+// ---- Profile Management ----
+
+function getProfiles() {
+    try {
+        const stored = localStorage.getItem('swpe_profiles');
+        return stored ? JSON.parse(stored) : {};
+    } catch (e) {
+        return {};
+    }
+}
+
+function saveProfiles(profiles) {
+    localStorage.setItem('swpe_profiles', JSON.stringify(profiles));
+}
+
+function updateProfileSelect() {
+    const select = document.getElementById('profile-select');
+    if (!select) return;
+    const profiles = getProfiles();
+    const currentVal = select.value;
+    
+    let html = '<option value="">-- 請選擇設定檔 --</option>';
+    for (const name of Object.keys(profiles)) {
+        html += `<option value="${name}">${name}</option>`;
+    }
+    select.innerHTML = html;
+    
+    if (profiles[currentVal]) {
+        select.value = currentVal;
+    }
+}
+
+function saveCurrentProfile() {
+    const nameInput = document.getElementById('profile-name-input');
+    const profileName = nameInput.value.trim();
+    if (!profileName) {
+        showToast('請輸入設定檔名稱', 'warning');
+        return;
+    }
+    
+    const settings = getCurrentSettings();
+    const modules = {
+        junxu: {
+            enabled: isChecked('module-junxu'),
+            levels: getSelectedLevels('junxu-levels')
+        },
+        bairen: {
+            enabled: isChecked('module-bairen'),
+            levels: getSelectedLevels('bairen-levels')
+        },
+        guanfu: {
+            enabled: isChecked('module-guanfu'),
+            levels: getSelectedLevels('guanfu-levels'),
+            times: getValue('guanfu-times', '1')
+        },
+        dungeon: {
+            enabled: isChecked('module-dungeon'),
+            levels: getSelectedLevels('dungeon-list'),
+            times: getValue('dungeon-times', '1'),
+            rebattle: getValue('dungeon-rebattle', '0')
+        }
+    };
+    
+    const profileData = {
+        settings,
+        modules,
+        moduleOrder: [...moduleOrder],
+        filename: getValue('filename-input', '我的腳本')
+    };
+    
+    const profiles = getProfiles();
+    profiles[profileName] = profileData;
+    saveProfiles(profiles);
+    
+    updateProfileSelect();
+    document.getElementById('profile-select').value = profileName;
+    showToast(`已儲存設定檔: ${profileName}`, 'success');
+}
+
+function loadSelectedProfile() {
+    const select = document.getElementById('profile-select');
+    const profileName = select.value;
+    if (!profileName) {
+        showToast('請先選擇要讀取的設定檔', 'warning');
+        return;
+    }
+    
+    const profiles = getProfiles();
+    const profileData = profiles[profileName];
+    if (!profileData) return;
+    
+    const { settings, modules, moduleOrder: savedOrder, filename } = profileData;
+    
+    // Restore base settings
+    if (settings) {
+        if (settings.mode) {
+            const modeEl = document.querySelector(`input[name="mode"][value="${settings.mode}"]`);
+            if (modeEl) { modeEl.checked = true; modeEl.dispatchEvent(new Event('change')); }
+        }
+        if (settings.teamRole) {
+            const roleEl = document.querySelector(`input[name="team-role"][value="${settings.teamRole}"]`);
+            if (roleEl) { roleEl.checked = true; roleEl.dispatchEvent(new Event('change')); }
+        }
+        
+        const inputMap = {
+            'leader-id': settings.leaderId,
+            'team-size': settings.teamSize,
+            'bag-number': settings.bagNumber,
+            'bag-toggle': settings.bagToggle,
+            'bag-count': settings.bagCount,
+            'bag-delay': settings.bagDelay,
+            'bag-start': settings.bagStart,
+            'bag-end': settings.bagEnd,
+            'teleport-id': settings.teleportId,
+            'deploy-general-id': settings.deployGeneralId,
+            'wuxijian-bag': settings.wuxijianBag,
+            'melee-only-bag': settings.meleeOnlyBag
+        };
+        for (const [id, val] of Object.entries(inputMap)) {
+            const el = document.getElementById(id);
+            if (el && val !== undefined) el.value = val;
+        }
+        
+        const checkboxMap = {
+            'enable-leader-id': settings.enableLeaderId,
+            'enable-team-size': settings.enableTeamSize,
+            'enable-bag-number': settings.enableBagNumber,
+            'enable-bag-cleaning': settings.enableBagCleaning,
+            'enable-exp-double': settings.enableExpDouble,
+            'enable-stop-exp-double': settings.enableStopExpDouble,
+            'enable-teleport': settings.enableTeleport,
+            'enable-deploy-general': settings.enableDeployGeneral,
+            'enable-retract-general': settings.enableRetractGeneral,
+            'enable-disable-bag-cleaning-afk': settings.enableDisableBagCleaningAfk,
+            'enable-wuxijian': settings.enableWuxijian,
+            'enable-melee-only': settings.enableMeleeOnly
+        };
+        for (const [id, val] of Object.entries(checkboxMap)) {
+            const el = document.getElementById(id);
+            if (el && val !== undefined) {
+                el.checked = val;
+                el.dispatchEvent(new Event('change'));
+            }
+        }
+    }
+    
+    // Restore modules
+    if (modules) {
+        if (modules.junxu) {
+            const el = document.getElementById('module-junxu');
+            if (el) { el.checked = modules.junxu.enabled; el.dispatchEvent(new Event('change')); }
+            if (modules.junxu.levels) {
+                document.querySelectorAll('#junxu-levels input[type="checkbox"]').forEach(cb => {
+                    cb.checked = modules.junxu.levels.includes(parseInt(cb.value, 10));
+                });
+            }
+        }
+        if (modules.bairen) {
+            const el = document.getElementById('module-bairen');
+            if (el) { el.checked = modules.bairen.enabled; el.dispatchEvent(new Event('change')); }
+            if (modules.bairen.levels) {
+                document.querySelectorAll('#bairen-levels input[type="checkbox"]').forEach(cb => {
+                    cb.checked = modules.bairen.levels.includes(parseInt(cb.value, 10));
+                });
+            }
+        }
+        if (modules.guanfu) {
+            const el = document.getElementById('module-guanfu');
+            if (el) { el.checked = modules.guanfu.enabled; el.dispatchEvent(new Event('change')); }
+            if (modules.guanfu.levels) {
+                document.querySelectorAll('#guanfu-levels input[type="checkbox"]').forEach(cb => {
+                    cb.checked = modules.guanfu.levels.includes(parseInt(cb.value, 10));
+                });
+            }
+            if (modules.guanfu.times) {
+                const tel = document.getElementById('guanfu-times');
+                if (tel) tel.value = modules.guanfu.times;
+            }
+        }
+        if (modules.dungeon) {
+            const el = document.getElementById('module-dungeon');
+            if (el) { el.checked = modules.dungeon.enabled; el.dispatchEvent(new Event('change')); }
+            if (modules.dungeon.levels) {
+                document.querySelectorAll('#dungeon-list input[type="checkbox"]').forEach(cb => {
+                    cb.checked = modules.dungeon.levels.includes(parseInt(cb.value, 10));
+                });
+            }
+            if (modules.dungeon.times) {
+                const tel = document.getElementById('dungeon-times');
+                if (tel) tel.value = modules.dungeon.times;
+            }
+            if (modules.dungeon.rebattle) {
+                const rel = document.getElementById('dungeon-rebattle');
+                if (rel) {
+                    rel.innerHTML = `<option value="${modules.dungeon.rebattle}">${modules.dungeon.rebattle}</option>`;
+                    rel.value = modules.dungeon.rebattle;
+                }
+            }
+        }
+    }
+    
+    syncSelectAllToggles();
+    
+    // Restore module order
+    if (savedOrder && savedOrder.length > 0) {
+        moduleOrder = savedOrder;
+        renderModulesList();
+    }
+    
+    if (filename !== undefined) {
+        const el = document.getElementById('filename-input');
+        if (el) el.value = filename;
+        document.getElementById('profile-name-input').value = profileName;
+    }
+    
+    updateDungeonRebattleOptions(); 
+    if (modules && modules.dungeon && modules.dungeon.rebattle) {
+        const rel = document.getElementById('dungeon-rebattle');
+        if (rel) rel.value = modules.dungeon.rebattle;
+    }
+    
+    autoGenerate();
+    showToast(`已讀取設定檔: ${profileName}`, 'success');
+}
+
+function deleteSelectedProfile() {
+    const select = document.getElementById('profile-select');
+    const profileName = select.value;
+    if (!profileName) {
+        showToast('請先選擇要刪除的設定檔', 'warning');
+        return;
+    }
+    
+    if (!confirm(`確定要刪除設定檔 "${profileName}" 嗎？`)) return;
+    
+    const profiles = getProfiles();
+    delete profiles[profileName];
+    saveProfiles(profiles);
+    
+    updateProfileSelect();
+    document.getElementById('profile-name-input').value = '';
+    showToast(`已刪除設定檔: ${profileName}`, 'success');
+}
+
+function initProfileManager() {
+    updateProfileSelect();
+    
+    const btnSave = document.getElementById('btn-save-profile');
+    const btnLoad = document.getElementById('btn-load-profile');
+    const btnDelete = document.getElementById('btn-delete-profile');
+    const profileSelect = document.getElementById('profile-select');
+    const profileInput = document.getElementById('profile-name-input');
+    
+    if (btnSave) btnSave.addEventListener('click', saveCurrentProfile);
+    if (btnLoad) btnLoad.addEventListener('click', loadSelectedProfile);
+    if (btnDelete) btnDelete.addEventListener('click', deleteSelectedProfile);
+    
+    if (profileSelect && profileInput) {
+        profileSelect.addEventListener('change', () => {
+            if (profileSelect.value) {
+                profileInput.value = profileSelect.value;
+            }
+        });
+    }
+}
+
 // ---- Init ----
 document.addEventListener('DOMContentLoaded', () => {
     initUI();
     setupTooltips();
+    initProfileManager();
 });

@@ -556,6 +556,24 @@
                 <h2>產生腳本</h2>
             </div>
             <div class="card-body">
+                <!-- Profile Management -->
+                <div class="profile-manager" style="margin-bottom: 20px; padding: 16px; background: rgba(13, 18, 30, 0.45); border: 1px solid rgba(42, 53, 80, 0.8); border-radius: var(--radius-md); box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);">
+                    <h3 style="font-size: 15px; font-weight: 600; color: var(--gold-light); margin-top: 0; margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">
+                        <span>💾</span> 設定檔快取管理
+                    </h3>
+                    <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 12px; flex-wrap: wrap;">
+                        <select id="profile-select" class="setting-input" style="flex: 1; min-width: 200px;">
+                            <option value="">-- 請選擇設定檔 --</option>
+                        </select>
+                        <button class="btn btn-primary" id="btn-load-profile" style="padding: 6px 12px; font-size: 13px;">讀取設定</button>
+                        <button class="btn btn-danger" id="btn-delete-profile" style="padding: 6px 12px; font-size: 13px;">刪除設定</button>
+                    </div>
+                    <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                        <input type="text" id="profile-name-input" class="setting-input" placeholder="輸入設定檔名稱" style="flex: 1; min-width: 200px;">
+                        <button class="btn btn-accent" id="btn-save-profile" style="padding: 6px 12px; font-size: 13px;">儲存目前設定</button>
+                    </div>
+                </div>
+
                 <div class="output-filename">
                     <label>檔案名稱：</label>
                     <input type="text" id="filename-input" class="setting-input" value="我的腳本" placeholder="輸入檔案名稱">
