@@ -1850,7 +1850,7 @@ function loadSelectedProfile() {
         if (el) el.value = filename;
     }
     
-    updateDungeonRebattleOptions(); 
+    updateRebattleDropdown(); 
     if (modules && modules.dungeon && modules.dungeon.rebattle) {
         const rel = document.getElementById('dungeon-rebattle');
         if (rel) rel.value = modules.dungeon.rebattle;
