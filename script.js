@@ -39,7 +39,7 @@ const DUNGEONS = [
     { level: 160, name: "赤壁之戰", script: "160赤壁之戰", interactId: 1, lootId: 24271, lootName: "赤壁烽火箱" },
     { level: 165, name: "華容", script: "165華容", interactId: 2, lootId: 24291, lootName: "華容救急袋" },
     { level: 170, name: "四郡", script: "170四郡", interactId: 19, lootId: 24358, lootName: "四郡平定盒" },
-    { level: 170, name: "曹仁", script: "170曹仁", interactId: 9, lootId: null, lootName: null },
+    { level: 170, name: "爆戒", script: "170爆戒", interactId: 9, lootId: null, lootName: null },
     { level: 170, name: "速刷", script: "170速刷", interactId: 9, lootId: 24328, lootName: "軍神之戰盒" },
     { level: 175, name: "劉備迎娶孫夫人", script: "175劉備迎娶孫夫人", interactId: 4, lootId: null, lootName: null },
     { level: 180, name: "張遼威震逍遙律", script: "180張遼威震逍遙律", interactId: 7, lootId: 24637, lootName: "金湯之盒" },
