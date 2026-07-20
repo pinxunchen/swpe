@@ -596,6 +596,13 @@ function generateSoloScript(settings, moduleOrder) {
 
 
 
+    lines.push('快速遇怪(0)');
+    lines.push('自動導航(16001) // 許昌');
+    lines.push('地圖限制(16001)');
+    lines.push('');
+    lines.push('延遲毫秒(2000)');
+    lines.push('');
+    
     appendSetupBlock(lines, settings);
 
     // Modules in order (except junxu)
