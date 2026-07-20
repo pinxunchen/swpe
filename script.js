@@ -546,22 +546,8 @@ function appendSetupBlock(lines, settings) {
         lines.push('');
     }
 
-    if (settings.enableMeleeOnly) {
-        lines.push('解除玩家裝備("特殊")');
-        lines.push('延遲毫秒(2000)');
-        lines.push(`快速物品處理.行囊放入(12040, ${settings.meleeOnlyBag})`);
-        lines.push('延遲毫秒(2000)');
-        lines.push('');
-    }
-
     if (settings.enableBagCleaning) {
         lines.push(`清理背包(${settings.bagToggle}, ${settings.bagCount}, ${settings.bagDelay}, ${settings.bagStart}, ${settings.bagEnd})`);
-        lines.push('延遲毫秒(2000)');
-        lines.push('');
-    }
-
-    if (settings.enableDeployGeneral) {
-        lines.push(`出戰武將(${settings.deployGeneralId})`);
         lines.push('延遲毫秒(2000)');
         lines.push('');
     }
