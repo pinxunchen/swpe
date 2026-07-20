@@ -525,35 +525,7 @@ function generateScript(isAuto = false) {
 }
 
 // --- Solo Mode Script ---
-function generateSoloScript(settings, moduleOrder) {
-    const lines = [];
-    const selectedDungeons = getSelectedDungeons();
-    const hasLoot = selectedDungeons.some(d => d.lootId);
-    const isDungeonEnabled = moduleOrder.some(m => m.id === 'dungeon' && m.enabled);
-
-    // Header
-    lines.push('快速遇怪(1)');
-    lines.push('');
-    if (settings.enableWaitTime) {
-        lines.push(`等待時間("${settings.waitTime}")`);
-        lines.push('');
-    }
-
-    if (hasLoot && isDungeonEnabled && settings.enableBagNumber) {
-        lines.push('fn 放物品入行囊(物品列表, 行囊編號)');
-        lines.push('{');
-        lines.push('    const 物品位置 = 真實背包物品.SelectWithIndex((item, i) => *[item[0], i + 1])');
-        lines.push('                        .Where((item, i) => 物品列表.Contains(item))');
-        lines.push('                        .Select((item, i) => i)');
-        lines.push('                        .ToList();');
-        lines.push('    以位置放入行囊(物品位置, 行囊編號);');
-        lines.push('    延遲毫秒(150);');
-        lines.push('}');
-        lines.push('');
-    }
-
-
-
+function appendSetupBlock(lines, settings) {
     if (settings.enableMeleeOnly) {
         lines.push('延遲毫秒(2000)');
         lines.push('解除玩家裝備("特殊")');
@@ -593,6 +565,38 @@ function generateSoloScript(settings, moduleOrder) {
         lines.push('延遲毫秒(2000)');
         lines.push('');
     }
+}
+
+function generateSoloScript(settings, moduleOrder) {
+    const lines = [];
+    const selectedDungeons = getSelectedDungeons();
+    const hasLoot = selectedDungeons.some(d => d.lootId);
+    const isDungeonEnabled = moduleOrder.some(m => m.id === 'dungeon' && m.enabled);
+
+    // Header
+    lines.push('快速遇怪(1)');
+    lines.push('');
+    if (settings.enableWaitTime) {
+        lines.push(`等待時間("${settings.waitTime}")`);
+        lines.push('');
+    }
+
+    if (hasLoot && isDungeonEnabled && settings.enableBagNumber) {
+        lines.push('fn 放物品入行囊(物品列表, 行囊編號)');
+        lines.push('{');
+        lines.push('    const 物品位置 = 真實背包物品.SelectWithIndex((item, i) => *[item[0], i + 1])');
+        lines.push('                        .Where((item, i) => 物品列表.Contains(item))');
+        lines.push('                        .Select((item, i) => i)');
+        lines.push('                        .ToList();');
+        lines.push('    以位置放入行囊(物品位置, 行囊編號);');
+        lines.push('    延遲毫秒(150);');
+        lines.push('}');
+        lines.push('');
+    }
+
+
+
+    appendSetupBlock(lines, settings);
 
     // Modules in order (except junxu)
     for (const mod of moduleOrder) {
@@ -783,51 +787,14 @@ function generateTeamLeaderScript(settings, moduleOrder) {
         lines.push('');
     }
 
-    if (settings.enableMeleeOnly) {
-        lines.push('延遲毫秒(2000)');
-        lines.push('解除玩家裝備("特殊")');
-        lines.push('延遲毫秒(2000)');
-        lines.push(`快速物品處理.行囊放入(12040, ${settings.meleeOnlyBag})`);
-        lines.push('延遲毫秒(2000)');
-    }
-
-    if (settings.enableStopExpDouble) {
-        lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 1, 0)');
-        lines.push('延遲毫秒(2000)');
-        lines.push('');
-    }
-
-    if (settings.enableDeployGeneral) {
-        lines.push(`出戰武將(${settings.deployGeneralId})`);
-        lines.push('延遲毫秒(2000)');
-        lines.push('');
-    }
-
-    if (settings.enableMeleeOnly) {
-        lines.push('解除玩家裝備("特殊")');
-        lines.push('延遲毫秒(2000)');
-        lines.push(`快速物品處理.行囊放入(12040, ${settings.meleeOnlyBag})`);
-        lines.push('延遲毫秒(2000)');
-        lines.push('');
-    }
-
-    if (settings.enableBagCleaning) {
-        lines.push(`清理背包(${settings.bagToggle}, ${settings.bagCount}, ${settings.bagDelay}, ${settings.bagStart}, ${settings.bagEnd})`);
-        lines.push('延遲毫秒(2000)');
-        lines.push('');
-    }
-
-    if (settings.enableDeployGeneral) {
-        lines.push(`出戰武將(${settings.deployGeneralId})`);
-        lines.push('延遲毫秒(2000)');
-        lines.push('');
-    }
     lines.push('快速遇怪(0)');
     lines.push('自動導航(16001) // 許昌');
     lines.push('地圖限制(16001)');
     lines.push('');
     lines.push('延遲毫秒(2000)');
     lines.push('');
+    
+    appendSetupBlock(lines, settings);
 
     // Modules in order (except junxu)
     for (const mod of moduleOrder) {
@@ -1141,48 +1108,11 @@ function generateTeamMemberScript(settings, moduleOrder) {
         lines.push('');
     }
 
-    if (settings.enableMeleeOnly) {
-        lines.push('延遲毫秒(2000)');
-        lines.push('解除玩家裝備("特殊")');
-        lines.push('延遲毫秒(2000)');
-        lines.push(`快速物品處理.行囊放入(12040, ${settings.meleeOnlyBag})`);
-        lines.push('延遲毫秒(2000)');
-    }
-
-    if (settings.enableStopExpDouble) {
-        lines.push('魯班盒攻擊(1, 0, 0, 0, 1, 1, 0)');
-        lines.push('延遲毫秒(2000)');
-        lines.push('');
-    }
-
-    if (settings.enableDeployGeneral) {
-        lines.push(`出戰武將(${settings.deployGeneralId})`);
-        lines.push('延遲毫秒(2000)');
-        lines.push('');
-    }
-
-    if (settings.enableMeleeOnly) {
-        lines.push('解除玩家裝備("特殊")');
-        lines.push('延遲毫秒(2000)');
-        lines.push(`快速物品處理.行囊放入(12040, ${settings.meleeOnlyBag})`);
-        lines.push('延遲毫秒(2000)');
-        lines.push('');
-    }
-
-    if (settings.enableBagCleaning) {
-        lines.push(`清理背包(${settings.bagToggle}, ${settings.bagCount}, ${settings.bagDelay}, ${settings.bagStart}, ${settings.bagEnd})`);
-        lines.push('延遲毫秒(2000)');
-        lines.push('');
-    }
-
-    if (settings.enableDeployGeneral) {
-        lines.push(`出戰武將(${settings.deployGeneralId})`);
-        lines.push('延遲毫秒(2000)');
-        lines.push('');
-    }
     lines.push('快速遇怪(0)');
     lines.push('自動導航(16001) // 許昌');
     lines.push('');
+    
+    appendSetupBlock(lines, settings);
 
     // Modules in order (except junxu)
     for (const mod of moduleOrder) {
